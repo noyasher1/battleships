@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battleships</title>
+<!--    <script src="./cell.js" type="module"></script>-->
+<!--    <script src="./board.js" type="module"></script>-->
+    <link href="style.css" rel="stylesheet" type="text/css">
+<!--    <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>-->
+<!--    <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>-->
+<!--    <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="./app.js" type="module"></script>
+</head>
+<body>
+    <div class='board' id="opponent-board">Competitor Board
+        <table>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+        </table>
+    </div>
+    <div class='board' id="user-board">Your Board
+        <table>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+            <tr>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+                <td class="notExposed"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

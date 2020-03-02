@@ -1,0 +1,58 @@
+.board{
+    display: inline-block;
+    margin-left: 100px;
+}
+
+table {
+    margin:0 auto;
+    border-spacing: unset;
+}
+
+td {
+    border: 1px solid rgba(0, 0, 0, .75);
+    height: 40px;
+    width: 40px;
+    font-size: 80px;
+    display: inline-block;
+}
+
+canvas {
+    margin:0 auto;
+    border: 1px solid rgba(0, 0, 0, .75);
+    height: 300px;
+    width: 300px;
+    display: inline-block;
+}
+
+.notExposed{
+    background: white;
+}
+
+#opponent-board .notExposed:hover{
+    background: lightgray;
+}
+
+.water{
+    background: deepskyblue;
+}
+
+.battleship{
+    background: black;
+}
+
+.battleshipPlaced{
+    background: #474747;
+}
+
+.consideredToContainBattleship{
+    background: #ff6e60;
+}
+
+.battleshipPlaced.consideredToContainBattleship{
+    background: #755353;
+}
+
+.rollingBattleshipLocation{
+    border: solid;
+    width: 400px;
+}
