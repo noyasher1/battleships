@@ -1,5 +1,8 @@
 const Cell = require("./cell");
 
+const boardLength = 10;
+const boardLastIndex= boardLength - 1;
+
 module.exports = class Board{
     constructor(){
         this.cells = [];
@@ -7,9 +10,9 @@ module.exports = class Board{
     }
 
     initBoard(){
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < boardLength; i++) {
             this.cells.push([]);
-            for (let j = 0; j < 10; j++) {
+            for (let j = 0; j < boardLength; j++) {
                 this.cells[i][j] = new Cell();
             }
         }
@@ -60,13 +63,13 @@ module.exports = class Board{
                     return true;
                 }
             }
-            if(columnIndex !== 10){
+            if(columnIndex !== boardLastIndex){
                 if(this.cells[rowIndex-1][columnIndex+1].isContainBattleship){
                     return true;
                 }
             }
         }
-        if(rowIndex !== 10){
+        if(rowIndex !== boardLastIndex){
             if(this.cells[rowIndex+1][columnIndex].isContainBattleship){
                 return true;
             }
@@ -75,7 +78,7 @@ module.exports = class Board{
                     return true;
                 }
             }
-            if(columnIndex !== 10){
+            if(columnIndex !== boardLastIndex){
                 if(this.cells[rowIndex+1][columnIndex+1].isContainBattleship){
                     return true;
                 }
@@ -90,13 +93,13 @@ module.exports = class Board{
                     return true;
                 }
             }
-            if(rowIndex !== 10){
+            if(rowIndex !== boardLastIndex){
                 if(this.cells[rowIndex+1][columnIndex-1].isContainBattleship){
                     return true;
                 }
             }
         }
-        if(columnIndex !== 10){
+        if(columnIndex !== boardLastIndex){
             if(this.cells[rowIndex][columnIndex+1].isContainBattleship){
                 return true;
             }
@@ -105,7 +108,7 @@ module.exports = class Board{
                     return true;
                 }
             }
-            if(rowIndex !== 10){
+            if(rowIndex !== boardLastIndex){
                 if(this.cells[rowIndex+1][columnIndex+1].isContainBattleship){
                     return true;
                 }
@@ -115,7 +118,7 @@ module.exports = class Board{
     }
     
     isCellExist(rowIndex, columnIndex){
-        return rowIndex >= 0 && rowIndex <= 10 && columnIndex >= 0 && columnIndex <= 10;
+        return rowIndex >= 0 && rowIndex <= boardLastIndex && columnIndex >= 0 && columnIndex <= boardLastIndex;
     }
 
     areCellsAvailableForLocating(startRowIndex, startColumnIndex, length, isHorizontal){
