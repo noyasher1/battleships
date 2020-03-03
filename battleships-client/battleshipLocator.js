@@ -22,6 +22,7 @@ export default class BattleshipLocator{
         this.resetBattleshipStateButton = document.getElementById("resetBattleshipState");
         this.placeTheBattleshipButton = document.getElementById("placeTheBattleship");
         this.addButtonsListeners();
+        this.addKeysListeners();
         this.shouldDisableAllButtons(true);
     }
 
@@ -148,6 +149,36 @@ export default class BattleshipLocator{
             }
             LocatingEmmiters.locateABattleship(this.server, this.startRowIndex, this.startColumnIndex, this.length, this.isHorizontal);
         };
+    }
+
+    addKeysListeners(){
+        this.boardToLocateOnElement.element.addEventListener("focus", () => {
+            this.boardToLocateOnElement.element.addEventListener("keydown", (event) => {
+                let pressedKey = event.key;
+                if (pressedKey === "ArrowUp"
+                    || pressedKey === "ArrowDown"
+                    || pressedKey === "ArrowRight"
+                    || pressedKey === "ArrowLeft"
+                    || pressedKey === " ") {
+                    event.preventDefault();
+                    if(pressedKey === "ArrowUp"){
+                        this.moveUpButton.click();
+                    }
+                    else if(pressedKey === "ArrowDown"){
+                        this.moveDownButton.click();
+                    }
+                    else if(pressedKey === "ArrowRight"){
+                        this.moveRightButton.click();
+                    }
+                    else if(pressedKey === "ArrowLeft"){
+                        this.moveLeftButton.click();
+                    }
+                    else if(pressedKey === " "){
+                        this.placeTheBattleshipButton.click();
+                    }
+                }
+            })
+        })
     }
 
     validateMovingRightPossibility(){
