@@ -18,6 +18,10 @@ let battleshipLocator;
 
 console.log("i am here");
 
+window.addEventListener("beforeunload", (event) => {
+    event.returnValue = ''; // When changing this value to value other then null or undefined, it prompt the message (in old browsers it prompt tje string set to the property)
+});
+
 /*socket.on("AskForABattleship", (data) => {
     console.log(data.length);
     battleshipLocator.length = data.length;
