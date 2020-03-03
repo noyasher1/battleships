@@ -146,7 +146,7 @@ export default class BattleshipLocator{
             if(!this.isActive){
                 return;
             }
-            LocatingEmmiters.locateABattleship(this.server, this.startRowIndex, this.startColumnIndex, this.length, this.isHorizontal)
+            LocatingEmmiters.locateABattleship(this.server, this.startRowIndex, this.startColumnIndex, this.length, this.isHorizontal);
         };
     }
 
