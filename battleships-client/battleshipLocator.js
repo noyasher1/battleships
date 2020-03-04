@@ -95,89 +95,56 @@ export default class BattleshipLocator{
 
     addButtonsListeners() {
         this.moveRightButton.onclick = () => {
-            if(!this.isActive){
-                return;
-            }
-            this.moveRight();
-            this.disableButtonIfNecessary(this.moveRightButton, this.validateMovingRightPossibility);
+            this.handleMoveRight();
         };
         this.moveLeftButton.onclick = () => {
-            if(!this.isActive){
-                return;
-            }
-            this.moveLeft();
-            this.disableButtonIfNecessary(this.moveLeftButton, this.validateMovingLeftPossibility);
+            this.handleMoveLeft();
         };
         this.moveUpButton.onclick = () => {
-            if(!this.isActive){
-                return;
-            }
-            this.moveUp();
-            this.disableButtonIfNecessary(this.moveUpButton, this.validateMovingUpPossibility);
+            this.handleMoveUp();
         };
         this.moveDownButton.onclick = () => {
-            if(!this.isActive){
-                return;
-            }
-            this.moveDown();
-            this.disableButtonIfNecessary(this.moveDownButton, this.validateMovingDownPossibility);
+            this.handleMoveDown();
         };
         let rotateButtons = document.getElementsByClassName("rotateButton");
         Array.from(rotateButtons).forEach((rotateButton) => {
             rotateButton.onclick = () => {
-                if(!this.isActive){
-                    return;
-                }
-                this.isHorizontal = !this.isHorizontal;
-                this.initLocation();
-                this.renderBattleship();
-                this.valuateButtons();
+                this.handleRotate();
             }
         });
         this.resetBattleshipStateButton.onclick = () => {
-            if(!this.isActive){
-                return;
-            }
-            this.isHorizontal = true;
-            this.initLocation();
-            this.renderBattleship();
-            this.valuateButtons();
+            this.handleResetBattleshipState();
         };
         this.placeTheBattleshipButton.onclick = () => {
-            if(!this.isActive){
-                return;
-            }
-            LocatingEmmiters.locateABattleship(this.server, this.startRowIndex, this.startColumnIndex, this.length, this.isHorizontal);
+            this.handlePlaceTheBattleship();
         };
     }
 
     addKeysListeners(){
-        this.boardToLocateOnElement.element.addEventListener("focus", () => {
-            this.boardToLocateOnElement.element.addEventListener("keydown", (event) => {
-                let pressedKey = event.key;
-                if (pressedKey === "ArrowUp"
-                    || pressedKey === "ArrowDown"
-                    || pressedKey === "ArrowRight"
-                    || pressedKey === "ArrowLeft"
-                    || pressedKey === " ") {
-                    event.preventDefault();
-                    if(pressedKey === "ArrowUp"){
-                        this.moveUpButton.click();
-                    }
-                    else if(pressedKey === "ArrowDown"){
-                        this.moveDownButton.click();
-                    }
-                    else if(pressedKey === "ArrowRight"){
-                        this.moveRightButton.click();
-                    }
-                    else if(pressedKey === "ArrowLeft"){
-                        this.moveLeftButton.click();
-                    }
-                    else if(pressedKey === " "){
-                        this.placeTheBattleshipButton.click();
-                    }
+        this.boardToLocateOnElement.element.addEventListener("keydown", (event) => {
+            let pressedKey = event.key;
+            if (pressedKey === "ArrowUp"
+                || pressedKey === "ArrowDown"
+                || pressedKey === "ArrowRight"
+                || pressedKey === "ArrowLeft"
+                || pressedKey === " ") {
+                event.preventDefault();
+                if(pressedKey === "ArrowUp"){
+                    this.handleMoveUp();
                 }
-            })
+                else if(pressedKey === "ArrowDown"){
+                    this.handleMoveDown();
+                }
+                else if(pressedKey === "ArrowRight"){
+                    this.handleMoveRight();
+                }
+                else if(pressedKey === "ArrowLeft"){
+                    this.handleMoveLeft();
+                }
+                else if(pressedKey === " "){
+                    this.handlePlaceTheBattleship();
+                }
+            }
         })
     }
 
@@ -227,36 +194,80 @@ export default class BattleshipLocator{
         this.disableButtonIfNecessary(this.moveDownButton, this.validateMovingDownPossibility);
     }
 
-    moveRight(){
+    handleMoveRight(){
+        if(!this.isActive){
+            return;
+        }
         if(this.validateMovingRightPossibility()){
             this.startColumnIndex += 1;
             this.renderBattleship();
             this.valuateButtons();
         }
+        this.disableButtonIfNecessary(this.moveRightButton, this.validateMovingRightPossibility);
     }
 
-    moveLeft(){
-        if(this.validateMovingLeftPossibility()){
+    handleMoveLeft(){
+        if(!this.isActive){
+            return;
+        }
+        if(this.validateMovingLeftPossibility()) {
             this.startColumnIndex -= 1;
             this.renderBattleship();
             this.valuateButtons();
         }
+        this.disableButtonIfNecessary(this.moveLeftButton, this.validateMovingLeftPossibility);
     }
 
-    moveUp(){
+    handleMoveUp(){
+        if(!this.isActive){
+            return;
+        }
         if(this.validateMovingUpPossibility()){
             this.startRowIndex -= 1;
             this.renderBattleship();
             this.valuateButtons();
         }
+        this.disableButtonIfNecessary(this.moveUpButton, this.validateMovingUpPossibility);
     }
 
-    moveDown(){
+    handleMoveDown(){
+        if(!this.isActive){
+            return;
+        }
+        console.log("start row index before change = " + this.startRowIndex.toString());
         if(this.validateMovingDownPossibility()){
             this.startRowIndex += 1;
             this.renderBattleship();
             this.valuateButtons();
         }
+        this.disableButtonIfNecessary(this.moveDownButton, this.validateMovingDownPossibility);
+    }
+
+    handleRotate(){
+        if(!this.isActive){
+            return;
+        }
+        this.isHorizontal = !this.isHorizontal;
+        this.initLocation();
+        this.renderBattleship();
+        this.valuateButtons();
+    }
+
+    handleResetBattleshipState(){
+        if(!this.isActive){
+            return;
+        }
+        this.isHorizontal = true;
+        this.initLocation();
+        this.renderBattleship();
+        this.valuateButtons();
+    }
+
+    handlePlaceTheBattleship(){
+        if(!this.isActive){
+            return;
+        }
+        LocatingEmitters.locateABattleship(this.server, this.startRowIndex, this.startColumnIndex, this.length, this.isHorizontal);
     }
 
     renderBattleship(){
