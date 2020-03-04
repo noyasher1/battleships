@@ -1,18 +1,13 @@
-const sessions = require("../../states/sessionsState").sessionsManager;
-const EventHandlers = require("./initializeBoardsHandlers");
-const LocatingEmitters = require("./initializeBoardsEmitters");
+const InitializeBoardsHandlers = require("./initializeBoardsHandlers");
+const InitializeBoardsEmitters = require("./initializeBoardsEmitters");
 
-module.exports = (socket) => {
-    console.log("is socket already subscribe = " + sessions.isSocketAlreadySubscribe(socket));
-    if(!sessions.isSocketAlreadySubscribe(socket)){
-        let newUser = sessions.subscribeUserSocketForAvailableSession(socket);
-        LocatingEmitters.askForStartLocating(socket);
-        LocatingEmitters.askForABattleship(socket, newUser.nextBattleship().length);
+module.exports = (socket, user, isNewUser) => {
+    if(isNewUser){
+        InitializeBoardsEmitters.askForStartLocating(socket);
+        InitializeBoardsEmitters.askForABattleship(socket, user.nextBattleship().length);
     }
-    console.log(sessions.sessions.length);
-    let user = sessions.getUserBySocket(socket);
     console.log("length = " + (user.nextBattleship().length).toString());
     socket.on("LocateABattleship", (event) => {
-        EventHandlers.locateABattleshipHandler(user, event);
+        InitializeBoardsHandlers.locateABattleshipHandler(user, event);
     });
 };

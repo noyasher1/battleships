@@ -2,13 +2,13 @@ const Session = require("../models/session");
 const User = require("../models/user");
 
 let _sessions = null;
-module.exports = class SessionsState{
+module.exports = class Sessions{
     constructor(){
         this.sessions = [];
     }
 
     static get sessionsManager(){
-        return _sessions ? _sessions : _sessions = new SessionsState();
+        return _sessions ? _sessions : _sessions = new Sessions();
     }
     isSocketAlreadySubscribe(socket){
         if(this.isSessionsArrayEmpty()){
