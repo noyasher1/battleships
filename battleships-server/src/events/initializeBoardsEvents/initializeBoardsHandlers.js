@@ -1,7 +1,7 @@
-const LocatingEmitters = require("./locatingEmitters");
-const LocatingStatus = require("../consts/locatingStatus");
+const LocatingEmitters = require("./initializeBoardsEmitters");
+const LocatingStatus = require("../../consts/locatingStatus");
 
-module.exports = class locatingHandlers{
+module.exports = class InitializeBoardsHandlers{
     static locateABattleshipHandler(user, event){
         console.log("placing request");
         let startRowIndex = event.startRowIndex;
