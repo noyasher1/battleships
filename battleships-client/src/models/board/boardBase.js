@@ -1,8 +1,8 @@
 'use strict';
 
-import Cell from './cell.js';
+import Cell from '../cell.js';
 
-export default class Board{
+export default class boardBase{
     constructor(nodeId, rowsNumber, columnsNumber){
         this.id = nodeId;
         this.rowsNumber = rowsNumber;
@@ -35,25 +35,7 @@ export default class Board{
         }
     }
 
-    initBoard(){
-        for (let i = 0; i < 10; i++) {
-            this.cells.push([]);
-            for (let j = 0; j < 10; j++) {
-                this.cells[i][j] = new Cell();
-            }
-        }
-    }
-
     markCellAsExposed(rowIndex, columnIndex){
         this.cells[rowIndex][columnIndex].isExposed = true;
-    }
-
-
-    isCellExposed(rowIndex, columnIndex){
-        return this.cells[rowIndex][columnIndex].isExposed;
-    }
-
-    isCellContainBattleship(rowIndex, columnIndex){
-        return this.cells[rowIndex][columnIndex].isContainBattleship;
     }
 }

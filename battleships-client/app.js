@@ -1,6 +1,7 @@
 'use strict';
 
-import Board from './src/models/board.js';
+import UserBoard from './src/models/board/userBoard.js';
+import OpponentBoard from './src/models/board/opponentBoard.js';
 //import { BattleshipLocator }  from './battleshipLocator.js';
 import BattleshipLocator from './battleshipLocator.js';
 const socket = io.connect("localhost:3000");
@@ -10,8 +11,8 @@ const COLUMNS_COUNT = 10;
 const userBoardId = "user-board";
 const opponentBoardId = "opponent-board";
 
-const userBoard = new Board(userBoardId, ROWS_COUNT, COLUMNS_COUNT);
-const opponentBoard = new Board(opponentBoardId, ROWS_COUNT, COLUMNS_COUNT);
+const userBoard = new UserBoard(userBoardId, ROWS_COUNT, COLUMNS_COUNT);
+const opponentBoard = new OpponentBoard(opponentBoardId, ROWS_COUNT, COLUMNS_COUNT);
 
 //let battleshipLocator = BattleshipLocator.instance;
 let battleshipLocator;
