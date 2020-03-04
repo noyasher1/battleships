@@ -1,5 +1,5 @@
 "use strict";
-import LocatingEmmiters from "./src/events/locatingEmitters.js"
+import LocatingEmitters from "./src/events/locatingEmitters.js"
 //let _battleshipToLocate = null;
 //export class BattleshipLocator{
 export default class BattleshipLocator{
