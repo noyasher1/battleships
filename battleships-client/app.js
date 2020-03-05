@@ -5,13 +5,14 @@ import OpponentBoard from './src/models/board/opponentBoard.js';
 import BattleshipLocator from './battleshipLocator.js';
 const socket = io.connect("localhost:3000");
 
-const ROWS_COUNT = 10;
+const BOARD_LENGTH = 10;
 const COLUMNS_COUNT = 10;
 const userBoardId = "user-board";
 const opponentBoardId = "opponent-board";
 
 const userBoard = new UserBoard(userBoardId, ROWS_COUNT, COLUMNS_COUNT);
-const opponentBoard = new OpponentBoard(opponentBoardId, ROWS_COUNT, COLUMNS_COUNT);
+const userBoard = new UserBoard(userBoardId, BOARD_LENGTH, BOARD_LENGTH);
+const opponentBoard = new OpponentBoard(opponentBoardId, BOARD_LENGTH, BOARD_LENGTH);
 
 //let battleshipLocator = BattleshipLocator.instance;
 let battleshipLocator;
