@@ -62,6 +62,8 @@ export default class BattleshipLocator{
             <button class="locatingButton moveButton rotateButton" id="rotateLeft">Rotate Left</button>
             <button class="locatingButton" id="placeTheBattleship">Place the battleship</button>
             <button class="locatingButton" id="resetBattleshipState">Reset battleship state</button>`;
+        buttonsDiv.style.border = "solid";
+        buttonsDiv.style.width = `${boardToLocateOnElement.querySelector("tbody").offsetWidth}px`;
         boardToLocateOnElement.appendChild(buttonsDiv);
     }
 
