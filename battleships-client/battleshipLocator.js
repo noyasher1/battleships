@@ -65,7 +65,9 @@ export default class BattleshipLocator{
         boardToLocateOnElement.appendChild(buttonsDiv);
     }
 
-        this.boardToLocateOnElement.element.appendChild(buttonsDiv);
+    removeButtons(){
+        let buttonsDiv = document.getElementById(buttonsDivId);
+        this.boardToLocateOnElement.element.removeChild(buttonsDiv);
     }
 
     initLocation(){
