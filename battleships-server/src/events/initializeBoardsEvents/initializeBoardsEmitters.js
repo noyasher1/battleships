@@ -3,20 +3,24 @@ module.exports = class InitializeBoardsEmitters{
         server.emit("AskForStartLocating")
     }
 
-    static askForABattleship(server, length){
+    static askForABattleship(socket, length){
         console.log("Sending requist for locating battleship in a length of: " + length.toString());
-        server.emit("AskForABattleship", {
+        socket.emit("AskForABattleship", {
             length
         })
     }
 
-    static locateABattleshipStatus(server, startRowIndex, startColumnIndex, length, isHorizontal, status){
-        server.emit("LocateABattleshipStatus", {
+    static locateABattleshipStatus(socket, startRowIndex, startColumnIndex, length, isHorizontal, status){
+        socket.emit("LocateABattleshipStatus", {
             startRowIndex,
             startColumnIndex,
             length,
             isHorizontal,
             status
         })
+    }
+
+    static allBattleshipsAreLocated(socket){
+        socket.emit("AllBattleshipsAreLocated");
     }
 };
