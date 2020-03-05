@@ -1,8 +1,17 @@
+#messageBox{
+    width: auto;
+    text-align: left;
+    height: 160px;
+    border: solid;
+    white-space: pre-line;
+}
+
 #gameBoards{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    text-align: center;
 }
 
 table {
