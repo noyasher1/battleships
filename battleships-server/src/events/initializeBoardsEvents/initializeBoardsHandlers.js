@@ -16,6 +16,9 @@ module.exports = class InitializeBoardsHandlers{
             if(user.nextBattleship() !== undefined){
                 LocatingEmitters.askForABattleship(user.socket, user.nextBattleship().length);
             }
+            else{
+                LocatingEmitters.allBattleshipsAreLocated(user.socket);
+            }
         }
         else{
             LocatingEmitters.locateABattleshipStatus(user.socket, startRowIndex, startColumnIndex, length, isHorizontal, LocatingStatus.FAILED);
