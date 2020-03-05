@@ -1,4 +1,5 @@
 'use strict';
+import MessageBox from './src/models/messageBox.js';
 import UserBoard from './src/models/board/userBoard.js';
 import OpponentBoard from './src/models/board/opponentBoard.js';
 //import { BattleshipLocator }  from './battleshipLocator.js';
@@ -6,11 +7,10 @@ import BattleshipLocator from './battleshipLocator.js';
 const socket = io.connect("localhost:3000");
 
 const BOARD_LENGTH = 10;
-const COLUMNS_COUNT = 10;
 const userBoardId = "user-board";
 const opponentBoardId = "opponent-board";
 
-const userBoard = new UserBoard(userBoardId, ROWS_COUNT, COLUMNS_COUNT);
+const messageBox = new MessageBox();
 const userBoard = new UserBoard(userBoardId, BOARD_LENGTH, BOARD_LENGTH);
 const opponentBoard = new OpponentBoard(opponentBoardId, BOARD_LENGTH, BOARD_LENGTH);
 
@@ -29,7 +29,7 @@ window.addEventListener("beforeunload", (event) => {
     battleshipLocator.initLocation();
 });*/
 socket.on("AskForStartLocating", () => {
-    battleshipLocator = new BattleshipLocator(socket, userBoard);
+    battleshipLocator = new BattleshipLocator(socket, userBoard, BOARD_LENGTH, messageBox);
     console.log("askForStartLocating")
 
 });
@@ -54,5 +54,7 @@ socket.on("LocateABattleshipStatus", (data) => {
 });
 
 socket.on("AllBattleshipsAreLocated", () => {
-    battleshipLocator.removeButtons();
+    battleshipLocator.allBattleshipsAreLocated();
+    messageBox.pushMessage("Nice! you have located all the battleships.\n"
+        + "Please wait for your opponent to finish locating his.");
 });

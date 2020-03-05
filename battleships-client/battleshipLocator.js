@@ -5,11 +5,12 @@ import LocatingEmitters from "./src/events/locatingEmitters.js"
 const buttonsDivId = "controllingBattleshipLocation";
 
 export default class BattleshipLocator{
-    constructor(server, boardToLocateOn, boardLength = 10){
+    constructor(server, boardToLocateOn, boardLength = 10, messageBox){
         this.server = server;
         this.isActive = false;
         this.boardToLocateOnElement = boardToLocateOn;
         this.boardLength = boardLength;
+        this.messageBox = messageBox;
         this.length = undefined;
         this.isHorizontal = true;
         this.startRowIndex = 0;
@@ -26,6 +27,7 @@ export default class BattleshipLocator{
         this.addButtonsListeners();
         this.addKeysListeners();
         this.shouldDisableAllButtons(true);
+        this.initMessageBox();
     }
 
     /*static get instance(){
@@ -39,6 +41,7 @@ export default class BattleshipLocator{
         this.renderBattleship();
         this.shouldDisableAllButtons(false);
         this.valuateButtons();
+        this.messageBox.pushMessage(`Please place a battleship with a length of ${this.length} cells.`)
     }
 
     finishLocating(){
@@ -47,6 +50,15 @@ export default class BattleshipLocator{
         this.initLocation();
         this.renderBattleship();
         this.shouldDisableAllButtons(true);
+        this.messageBox.popMessage()
+    }
+
+    initMessageBox(){
+        this.messageBox.pushMessage("Please start locate your battleships.\n"
+            + "You can place your battleship only vertically or horizontally, Not diagonally.\n"
+            + "You must have a space of at least one cell between one battleship to another.\n"
+            + "You can use the buttons below the board or key board.\n"
+            + "In keyboard use arrow keys to move, and space to determine the location.\n")
     }
 
     addButtons(){
@@ -70,6 +82,15 @@ export default class BattleshipLocator{
     removeButtons(){
         let buttonsDiv = document.getElementById(buttonsDivId);
         this.boardToLocateOnElement.element.removeChild(buttonsDiv);
+    }
+
+    resetMessagesFromLocator(){
+        this.messageBox.clear();
+    }
+
+    allBattleshipsAreLocated(){
+        this.removeButtons();
+        this.resetMessagesFromLocator();
     }
 
     initLocation(){
