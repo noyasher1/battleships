@@ -1,6 +1,8 @@
-.board{
-    display: inline-block;
-    margin-left: 100px;
+#gameBoards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 table {
@@ -50,9 +52,4 @@ canvas {
 
 .battleshipPlaced.consideredToContainBattleship{
     background: #755353;
-}
-
-.rollingBattleshipLocation{
-    border: solid;
-    width: 400px;
 }
