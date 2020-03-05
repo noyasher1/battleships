@@ -2,6 +2,8 @@
 import LocatingEmitters from "./src/events/locatingEmitters.js"
 //let _battleshipToLocate = null;
 //export class BattleshipLocator{
+const buttonsDivId = "controllingBattleshipLocation";
+
 export default class BattleshipLocator{
     constructor(server, boardToLocateOn, boardLength = 10){
         this.server = server;
@@ -48,8 +50,9 @@ export default class BattleshipLocator{
     }
 
     addButtons(){
+        let boardToLocateOnElement = this.boardToLocateOnElement.element;
         let buttonsDiv = document.createElement("div");
-        buttonsDiv.className = 'rollingBattleshipLocation';
+        buttonsDiv.id = buttonsDivId;
         buttonsDiv.innerHTML = `
             <button class="locatingButton moveButton" id="moveUp">Move Up</button>
             <button class="locatingButton moveButton" id="moveDown">Move Down</button>
@@ -59,6 +62,8 @@ export default class BattleshipLocator{
             <button class="locatingButton moveButton rotateButton" id="rotateLeft">Rotate Left</button>
             <button class="locatingButton" id="placeTheBattleship">Place the battleship</button>
             <button class="locatingButton" id="resetBattleshipState">Reset battleship state</button>`;
+        boardToLocateOnElement.appendChild(buttonsDiv);
+    }
 
         this.boardToLocateOnElement.element.appendChild(buttonsDiv);
     }
