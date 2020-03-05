@@ -1,5 +1,4 @@
 'use strict';
-
 import UserBoard from './src/models/board/userBoard.js';
 import OpponentBoard from './src/models/board/opponentBoard.js';
 //import { BattleshipLocator }  from './battleshipLocator.js';
@@ -43,8 +42,6 @@ socket.emit("myEvent", {
     id: "VerySpecialId"
 });
 
-
-
 socket.on("LocateABattleshipStatus", (data) => {
     console.log(data);
     console.log("is cells undefined = " + (userBoard.cells === undefined).toString());
@@ -53,4 +50,8 @@ socket.on("LocateABattleshipStatus", (data) => {
         battleshipLocator.finishLocating();
     }
     console.log(data.status);
+});
+
+socket.on("AllBattleshipsAreLocated", () => {
+    battleshipLocator.removeButtons();
 });
