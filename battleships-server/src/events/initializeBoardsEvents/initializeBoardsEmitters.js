@@ -1,5 +1,6 @@
 module.exports = class InitializeBoardsEmitters{
     static askForStartLocating(server) {
+        console.log("asking for start locating")
         server.emit("AskForStartLocating")
     }
 
@@ -22,5 +23,9 @@ module.exports = class InitializeBoardsEmitters{
 
     static allBattleshipsAreLocated(socket){
         socket.emit("AllBattleshipsAreLocated");
+    }
+
+    static opponentIsReadyToPlay(socket){
+        socket.emit("OpponentIsReadyToPlay");
     }
 };

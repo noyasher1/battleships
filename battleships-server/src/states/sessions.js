@@ -30,11 +30,14 @@ module.exports = class Sessions{
 
     subscribeUserSocketForAvailableSession(socket){
         let newUser;
+        let usedSession;
         if(this.isSessionsArrayEmpty()){
             let newSession = new Session();
             newUser = new User(socket);
             newSession.user1 = newUser;
             this.sessions.push(newSession);
+            usedSession = newSession;
+
         }
         else{
             let isFoundAvailableSession = false;
@@ -44,7 +47,8 @@ module.exports = class Sessions{
                     isFoundAvailableSession = true;
                     newUser = new User(socket);
                     session.user2 = newUser;
-                    session.isActive = true;
+                    //session.isActive = true;
+                    usedSession = session
                 }
             }
             if(!isFoundAvailableSession){
@@ -53,14 +57,19 @@ module.exports = class Sessions{
                 newSession.user1 = newUser;
                 this.sessions.push(newSession);
                 // _sessions.push(newSession);
+                usedSession = newSession
             }
         }
-
-        return newUser;
+        return {
+            session: usedSession,
+            user: newUser
+        }
     }
 
     getSessionBySocket(socket){
+        console.log("trying to get session by socket")
         if(this.isSessionsArrayEmpty()){
+            console.log("returns undefined")
             return undefined;
         }
         for(let session of this.sessions){

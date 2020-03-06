@@ -150,7 +150,9 @@ export default class UserBoard extends BoardBase{
                 </tr>
             </table>`;
 
-        document.getElementById("gameBoards").appendChild(userBoardElement);
+        //document.getElementById("gameBoards").appendChild(userBoardElement);
+        let parentDiv = document.getElementById("gameBoards");
+        parentDiv.insertBefore(userBoardElement, parentDiv.childNodes[0] || null);
 
         this.mapBoard();
     }

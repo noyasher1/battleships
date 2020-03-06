@@ -13,22 +13,29 @@ const io = new IoServer(app);
 
 //new EventListener(io);  // Bind event listeners to the server object
 
-let isNewUser;
-let user = undefined;
+
 io.on("connection", (socket) => {
+    let session;// = undefined;
+    let user;// = undefined;
+    let isNewUser;
     console.log("is socket already subscribe = " + sessions.isSocketAlreadySubscribe(socket));
     if(!sessions.isSocketAlreadySubscribe(socket)){
+        console.log("if");
         isNewUser = true;
-        user = sessions.subscribeUserSocketForAvailableSession(socket);
+        let {session: usedSession, user: newUser} = sessions.subscribeUserSocketForAvailableSession(socket);
+        session = usedSession;
+        user = newUser;
     }
     else{
+        console.log("else");
         isNewUser = false;
         user = sessions.getUserBySocket(socket);
+        session = sessions.getSessionBySocket(socket);
     }
-    console.log(sessions.sessions.length);
-    initializeBoardsListeners(socket, user, isNewUser);
 
-    user = undefined;
+    console.log(sessions.sessions.length);
+
+    initializeBoardsListeners(socket, session, user, isNewUser);
 });
 
 

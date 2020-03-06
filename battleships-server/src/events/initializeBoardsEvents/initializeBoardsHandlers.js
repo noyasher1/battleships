@@ -2,7 +2,7 @@ const LocatingEmitters = require("./initializeBoardsEmitters");
 const LocatingStatus = require("../../consts/locatingStatus");
 
 module.exports = class InitializeBoardsHandlers{
-    static locateABattleshipHandler(user, event){
+    static locateABattleshipHandler(session, user, event){
         console.log("placing request");
         let startRowIndex = event.startRowIndex;
         let startColumnIndex = event.startColumnIndex;
@@ -18,6 +18,7 @@ module.exports = class InitializeBoardsHandlers{
             }
             else{
                 LocatingEmitters.allBattleshipsAreLocated(user.socket);
+                LocatingEmitters.opponentIsReadyToPlay(session.getOpponent(user).socket);
             }
         }
         else{
