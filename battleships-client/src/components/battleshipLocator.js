@@ -4,11 +4,12 @@ import InitializeBoardEmitters from "../events/initializeBoardEvents/initializeB
 const buttonsDivId = "controllingBattleshipLocation";
 
 export default class BattleshipLocator{
-    constructor(server, boardToLocateOn, boardLength = 10, messageBox){
+    constructor(server, boardToLocateOn, messageBox){
         this.server = server;
         this.isActive = false;
         this.boardToLocateOnElement = boardToLocateOn;
-        this.boardLength = boardLength;
+        this.boardHeightCellsNumber = this.boardToLocateOnElement.columnsNumber;
+        this.boardWidthCellsNumber = this.boardToLocateOnElement.rowsNumber;
         this.messageBox = messageBox;
         this.length = undefined;
         this.isHorizontal = true;
@@ -176,12 +177,12 @@ export default class BattleshipLocator{
 
     validateMovingRightPossibility(){
         if(this.isHorizontal){
-            if(this.startColumnIndex + this.length < this.boardLength){
+            if(this.startColumnIndex + this.length < this.boardWidthCellsNumber){
                 return true;
             }
         }
         else{
-            if(this.startColumnIndex + 1 < this.boardLength){
+            if(this.startColumnIndex + 1 < this.boardWidthCellsNumber){
                 return true;
             }
         }
@@ -198,12 +199,12 @@ export default class BattleshipLocator{
 
     validateMovingDownPossibility(){
         if(this.isHorizontal){
-            if(this.startRowIndex + 1 < this.boardLength){
+            if(this.startRowIndex + 1 < this.boardHeightCellsNumber){
                 return true;
             }
         }
         else {
-            if(this.startRowIndex + this.length < this.boardLength){
+            if(this.startRowIndex + this.length < this.boardHeightCellsNumber){
                 return true;
             }
         }
