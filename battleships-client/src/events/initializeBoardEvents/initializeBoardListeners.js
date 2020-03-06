@@ -2,7 +2,7 @@ import BattleshipLocator from "../../components/battleshipLocator.js";
 import InitializeBoardHandlers from './initializeBoardHandlers.js';
 
 let battleshipLocator;
-export default (socket, flags, messageBox, userBoard, opponentBoard, buttonToRemove) => {
+export default (socket, messageBox, userBoard, opponentBoard, buttonToRemove) => {
     socket.on("AskForStartLocating", () => {
         messageBox.popMessage();
         document.body.removeChild(buttonToRemove);
@@ -19,10 +19,10 @@ export default (socket, flags, messageBox, userBoard, opponentBoard, buttonToRem
     });
 
     socket.on("AllBattleshipsAreLocated", () => {
-        InitializeBoardHandlers.allBattleshipsAreLocatedHandler(battleshipLocator, messageBox, flags, opponentBoard);
+        InitializeBoardHandlers.allBattleshipsAreLocatedHandler(battleshipLocator, messageBox, opponentBoard);
     });
 
     socket.on("OpponentIsReadyToPlay", () => {
-        InitializeBoardHandlers.opponentIsReadyToPlayHandler(flags, messageBox, opponentBoard)
+        InitializeBoardHandlers.opponentIsReadyToPlayHandler(messageBox, opponentBoard)
     })
 }

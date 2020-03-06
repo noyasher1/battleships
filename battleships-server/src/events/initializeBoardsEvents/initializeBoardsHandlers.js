@@ -13,12 +13,16 @@ module.exports = class InitializeBoardsHandlers{
             user.markLastBattleshipAsLocated();
             LocatingEmitters.locateABattleshipStatus(user.socket, startRowIndex, startColumnIndex, length, isHorizontal, LocatingStatus.SUCCEED);
             console.log("Battleship placed");
-            if(user.nextBattleship() !== undefined){
+            if(!user.isFinishedLocating){
                 LocatingEmitters.askForABattleship(user.socket, user.nextBattleship().length);
             }
             else{
                 LocatingEmitters.allBattleshipsAreLocated(user.socket);
-                LocatingEmitters.opponentIsReadyToPlay(session.getOpponent(user).socket);
+                let opponent = session.getOpponent(user);
+                LocatingEmitters.opponentIsReadyToPlay(opponent.socket);
+                if(user.isFinishedLocating && opponent.isFinishedLocating){
+                    LocatingEmitters.prepareForStartGame(user, opponent);
+                }
             }
         }
         else{

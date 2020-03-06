@@ -28,6 +28,10 @@ module.exports = class User{
         ];
     }
 
+    get isFinishedLocating(){
+        return this.nextBattleship() === undefined;
+    }
+
     nextBattleship(){
         for(let battleshipToLocate of this.battleshipsToLocate){
             if (!battleshipToLocate.isLocated){
