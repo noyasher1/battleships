@@ -14,7 +14,7 @@
     text-align: center;
 }
 
-.board:focus{
+div:focus{
     outline: none;
 }
 

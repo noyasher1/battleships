@@ -1,4 +1,4 @@
-import BattleshipLocator from "../../battleshipLocator.js";
+import BattleshipLocator from "../components/battleshipLocator.js";
 import InitializeBoardHandlers from './initializeBoardHandlers.js';
 
 let battleshipLocator;
