@@ -28,6 +28,5 @@ module.exports = class InitializeBoardsHandlers{
         else{
             LocatingEmitters.locateABattleshipStatus(user.socket, startRowIndex, startColumnIndex, length, isHorizontal, LocatingStatus.FAILED);
         }
-        //server.send(locatingStatus);
     }
 };
