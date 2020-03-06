@@ -2,7 +2,8 @@
 import MessageBox from './src/models/messageBox.js';
 import UserBoard from './src/models/board/userBoard.js';
 import OpponentBoard from './src/models/board/opponentBoard.js';
-import initializeBoardListeners from './src/events/initializeBoardListeners.js';
+import initializeBoardListeners from './src/events/initializeBoardEvents/initializeBoardListeners.js';
+import BattleshipLocator from "./src/components/battleshipLocator.js";
 
 
 const BOARD_LENGTH = 10;

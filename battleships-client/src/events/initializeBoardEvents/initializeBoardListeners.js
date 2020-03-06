@@ -1,10 +1,13 @@
-import BattleshipLocator from "../components/battleshipLocator.js";
+import BattleshipLocator from "../../components/battleshipLocator.js";
 import InitializeBoardHandlers from './initializeBoardHandlers.js';
 
 let battleshipLocator;
-export default (socket, messageBox, boardLength, userBoard) => {
+export default (socket, messageBox, userBoard, buttonToRemove) => {
     socket.on("AskForStartLocating", () => {
-        battleshipLocator = new BattleshipLocator(socket, userBoard, boardLength, messageBox);
+        messageBox.popMessage();
+        document.body.removeChild(buttonToRemove);
+        userBoard.render();
+        battleshipLocator = new BattleshipLocator(socket, userBoard, messageBox);
     });
 
     socket.on("AskForABattleship", (data) => {
