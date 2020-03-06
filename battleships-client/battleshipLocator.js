@@ -1,7 +1,6 @@
 "use strict";
-import LocatingEmitters from "./src/events/locatingEmitters.js"
-//let _battleshipToLocate = null;
-//export class BattleshipLocator{
+import InitializeBoardEmitters from "./src/events/initializeBoardEmitters.js"
+
 const buttonsDivId = "controllingBattleshipLocation";
 
 export default class BattleshipLocator{
@@ -30,9 +29,6 @@ export default class BattleshipLocator{
         this.initMessageBox();
     }
 
-    /*static get instance(){
-        return _battleshipToLocate ? _battleshipToLocate : _battleshipToLocate = new BattleshipLocator(document.getElementById("user-board"), 10);
-    }*/
     startLocating(length){
         this.isActive = true;
         this.length = length;
@@ -297,7 +293,7 @@ export default class BattleshipLocator{
         if(!this.isActive){
             return;
         }
-        LocatingEmitters.locateABattleship(this.server, this.startRowIndex, this.startColumnIndex, this.length, this.isHorizontal);
+        InitializeBoardEmitters.locateABattleship(this.server, this.startRowIndex, this.startColumnIndex, this.length, this.isHorizontal);
     }
 
     renderBattleship(){
