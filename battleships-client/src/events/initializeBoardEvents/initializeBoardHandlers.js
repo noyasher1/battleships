@@ -21,7 +21,7 @@ export default class InitializeBoardHandlers{
         }
     }
 
-    static opponentIsReadyToPlayHandler(messageBox, opponentBoard){
+    static opponentIsReadyToPlayHandler(){
         isOpponentFinishedLocating = true;
     }
 }

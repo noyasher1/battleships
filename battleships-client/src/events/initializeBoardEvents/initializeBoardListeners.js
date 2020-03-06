@@ -23,6 +23,6 @@ export default (socket, messageBox, userBoard, opponentBoard, buttonToRemove) =>
     });
 
     socket.on("OpponentIsReadyToPlay", () => {
-        InitializeBoardHandlers.opponentIsReadyToPlayHandler(messageBox, opponentBoard)
+        InitializeBoardHandlers.opponentIsReadyToPlayHandler( )
     })
 }
