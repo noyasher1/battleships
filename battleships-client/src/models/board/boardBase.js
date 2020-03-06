@@ -8,11 +8,11 @@ export default class boardBase{
         this.rowsNumber = rowsNumber;
         this.columnsNumber = columnsNumber;
         this.cells = [];
-        this.element = document.querySelector(`#${this.id}`);
-        this.mapBoard();
+        this.element;
     }
 
     mapBoard(){
+        this.element = document.querySelector(`#${this.id}`);
         for (let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++) {
             this.cells.push([]);
             let rowCellsElements = this.element.querySelectorAll(`tr`)[rowIndex].querySelectorAll("td");

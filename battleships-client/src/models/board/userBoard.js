@@ -20,4 +20,138 @@ export default class UserBoard extends BoardBase{
     markCellAsExposed(rowIndex, columnIndex){
         this.cells[rowIndex][columnIndex].isExposed = true;
     }
+
+    render(){
+        let userBoardElement = document.createElement("div");
+        userBoardElement.id = "user-board";
+        userBoardElement.tabIndex = 0;
+
+        userBoardElement.innerHTML = `Your Board
+        <table>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+                <tr>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                    <td class="notExposed"></td>
+                </tr>
+            </table>`;
+
+        document.getElementById("gameBoards").appendChild(userBoardElement);
+
+        this.mapBoard();
+    }
 }
