@@ -4,7 +4,7 @@ module.exports = class InitializeBoardsEmitters{
     }
 
     static askForABattleship(socket, length){
-        console.log("Sending requist for locating battleship in a length of: " + length.toString());
+        console.log("Sending request for locating battleship in a length of: " + length.toString());
         socket.emit("AskForABattleship", {
             length
         })
