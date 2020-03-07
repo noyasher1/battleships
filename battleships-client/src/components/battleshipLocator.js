@@ -54,8 +54,8 @@ export default class BattleshipLocator{
         this.messageBox.pushMessage("Please start locate your battleships.\n"
             + "You can place your battleship only vertically or horizontally, Not diagonally.\n"
             + "You must have a space of at least one cell between one battleship to another.\n"
-            + "You can use the buttons below the board or key board.\n"
-            + "In keyboard use arrow keys to move, and space to determine the location.\n")
+            + "You can use the buttons below the board or keyboard.\n"
+            + "In keyboard use arrow keys to move, and space to determine the location.")
     }
 
     addButtons(){
