@@ -5,11 +5,12 @@ module.exports = class InitializeBoardsEmitters{
             });
     }
 
-    static opponentMove(socket, rowIndex, columnIndex, isContainBattleship){
+    static opponentMove(socket, rowIndex, columnIndex, isContainBattleship, isOpponentWon){
         socket.emit("OpponentMove", {
             rowIndex,
             columnIndex,
-            isContainBattleship
+            isContainBattleship,
+            isOpponentWon
         })
     };
 
@@ -17,12 +18,13 @@ module.exports = class InitializeBoardsEmitters{
         socket.emit("YourTurn");
     };*/
 
-    static userMoveStatus(socket, isSucceed, rowIndex, columnIndex, isContainBattleship){
+    static userMoveStatus(socket, isSucceed, rowIndex, columnIndex, isContainBattleship, amIWinner){
         socket.emit("UserMoveStatus", {
             isSucceed,
             rowIndex,
             columnIndex,
-            isContainBattleship
+            isContainBattleship,
+            amIWinner
         })
     }
 };

@@ -7,6 +7,7 @@ module.exports = class Board{
     constructor(){
         this.cells = [];
         this.initBoard();
+        this.cellsContainBattleship = [];
     }
 
     initBoard(){
@@ -20,6 +21,9 @@ module.exports = class Board{
 
     markCellAsExposed(rowIndex, columnIndex){
         this.cells[rowIndex][columnIndex].isExposed = true;
+        if(this.isCellContainBattleship(rowIndex, columnIndex)){
+            this.cellsContainBattleship.find(cell => cell.rowIndex === rowIndex && cell.columnIndex === columnIndex).isExposed = true;
+        }
     }
 
     markCellsAsContainBattleship(startRowIndex, startColumnIndex, length, isHorizontal){
@@ -27,12 +31,14 @@ module.exports = class Board{
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
                 this.cells[startRowIndex][columnIndex].isContainBattleship = true;
+                this.cellsContainBattleship.push({rowIndex: startRowIndex, columnIndex, isExposed: false});
                 console.log(`marked cell as contain battleship: ${startRowIndex.toString()}, ${columnIndex}`)
             }
         }
         else{
             for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
                 this.cells[rowIndex][startColumnIndex].isContainBattleship = true;
+                this.cellsContainBattleship.push({rowIndex, columnIndex: startColumnIndex, isExposed: false});
                 console.log(`marked cell as contain battleship: ${rowIndex.toString()}, ${startColumnIndex}`)
             }
         }
@@ -131,6 +137,17 @@ module.exports = class Board{
                     return false;
                 }
             }
+        }
+        return true;
+    }
+
+    areBattleshipsTotallyExposed(){
+        for(let containedBattleshipCell of this.cellsContainBattleship){
+            if(!containedBattleshipCell.isExposed){
+                console.log(`cell not exposed: ${containedBattleshipCell.rowIndex}, ${containedBattleshipCell.columnIndex}`);
+                return false;
+            }
+            console.log(`cell exposed: ${containedBattleshipCell.rowIndex}, ${containedBattleshipCell.columnIndex}`);
         }
         return true;
     }

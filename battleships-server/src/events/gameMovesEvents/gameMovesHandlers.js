@@ -10,8 +10,9 @@ module.exports = class GameMovesHandlers{
         else{
             let isCellContainBattleship = opponent.board.isCellContainBattleship(rowIndex, columnIndex);
             opponent.board.markCellAsExposed(rowIndex, columnIndex);
-            GameMovesEmitters.userMoveStatus(user.socket, true, rowIndex, columnIndex, isCellContainBattleship);
-            GameMovesEmitters.opponentMove(opponent.socket, rowIndex, columnIndex, isCellContainBattleship)
+            let isUserWon = opponent.board.areBattleshipsTotallyExposed();
+            GameMovesEmitters.userMoveStatus(user.socket, true, rowIndex, columnIndex, isCellContainBattleship, isUserWon);
+            GameMovesEmitters.opponentMove(opponent.socket, rowIndex, columnIndex, isCellContainBattleship, isUserWon)
         }
     }
 };

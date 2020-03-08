@@ -25,7 +25,12 @@ export default class GameMovesHandlers{
             //data.rowIndex, data.columnIndex
             opponentBoard.markCellAsExposed(rowIndex, columnIndex);
             if(data.isContainBattleship){
-                opponentBoard.markCellAsContainBattleship(rowIndex, columnIndex)
+                opponentBoard.markCellAsContainBattleship(rowIndex, columnIndex);
+                console.log("is winner = " + data.amIWinner.toString());
+                if(data.amIWinner){
+                    console.log("you are the winner");
+                    alert("you are the winner");
+                }
             }
             else{
                 opponentBoard.prepareForOpponentTurn(messageBox);
@@ -38,7 +43,12 @@ export default class GameMovesHandlers{
         let columnIndex = data.columnIndex;
         userBoard.markCellAsExposed(rowIndex, columnIndex);
         if(data.isContainBattleship){
-            userBoard.markCellAsContainBattleship(rowIndex, columnIndex)
+            userBoard.markCellAsContainBattleship(rowIndex, columnIndex);
+            console.log("is looser = " + data.isOpponentWon.toString());
+            if(data.isOpponentWon){
+                console.log("You are a looser");
+                alert("You are a looser");
+            }
         }
         else{
             opponentBoard.prepareForUserTurn(messageBox)
