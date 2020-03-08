@@ -43,20 +43,12 @@ canvas {
     background: white;
 }
 
-#opponent-board .notExposed:hover{
-    background: lightgray;
-}
-
-.water{
+.notExposed{
     background: deepskyblue;
 }
 
-.battleship{
-    background: black;
-}
-
-.battleshipPlaced{
-    background: #474747;
+[class="notSet"]{
+    background: deepskyblue;
 }
 
 .consideredToContainBattleship{
@@ -65,4 +57,24 @@ canvas {
 
 .battleshipPlaced.consideredToContainBattleship{
     background: #755353;
+}
+
+.battleshipPlaced{
+    background: #474747;
+}
+
+#opponent-board .notExposed{
+    background: white;
+}
+
+#opponent-board .notExposed:hover{
+    background: lightgray;
+}
+
+.exposed{
+    background: deepskyblue;
+}
+
+.exposed.battleshipPlaced{
+    background: #474747;
 }
