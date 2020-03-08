@@ -29,6 +29,7 @@ td {
     width: 40px;
     font-size: 80px;
     display: inline-block;
+    position: relative;
 }
 
 canvas {
@@ -39,8 +40,20 @@ canvas {
     display: inline-block;
 }
 
-.notExposed{
-    background: white;
+#user-board td.exposed:after{
+    display: block;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    content: ' ';
+    background-image: url('icons/xIcon.svg');
+    background-size: 30px 30px;
+    height: 30px;
+    width: 30px;
+}
+
+#user-board td.exposed.battleshipPlaced:after{
+    background-image: url('icons/sniperSightIcon.svg');
 }
 
 .notExposed{
