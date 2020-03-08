@@ -36,6 +36,10 @@ export default class boardBase{
     }
 
     markCellAsExposed(rowIndex, columnIndex){
-        this.cells[rowIndex][columnIndex].isExposed = true;
+        this.cells[rowIndex][columnIndex].markAsExposed();
+    }
+
+    markCellAsContainBattleship(rowIndex, columnIndex){
+        this.cells[rowIndex][columnIndex].markAsContainBattleship()
     }
 }

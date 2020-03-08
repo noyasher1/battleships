@@ -1,4 +1,5 @@
 const LocatingEmitters = require("./initializeBoardsEmitters");
+const GameMovesEmitters = require("../gameMovesEvents/gameMovesEmitters.js");
 const LocatingStatus = require("../../consts/locatingStatus");
 
 module.exports = class InitializeBoardsHandlers{
@@ -21,7 +22,8 @@ module.exports = class InitializeBoardsHandlers{
                 let opponent = session.getOpponent(user);
                 LocatingEmitters.opponentIsReadyToPlay(opponent.socket);
                 if(user.isFinishedLocating && opponent.isFinishedLocating){
-                    LocatingEmitters.prepareForStartGame(user, opponent);
+                    GameMovesEmitters.startGame(user.socket, true);
+                    GameMovesEmitters.startGame(opponent.socket, false);
                 }
             }
         }

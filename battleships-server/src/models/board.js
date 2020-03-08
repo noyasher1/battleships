@@ -26,18 +26,14 @@ module.exports = class Board{
         console.log("trying to mark cells as contain battleship");
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
-                if(this.isCellExist(startRowIndex, columnIndex) && !this.isCellHaveOsculatedBattleship(startRowIndex, columnIndex) && !this.isCellContainBattleship(startRowIndex, columnIndex)){
-                    this.cells[startRowIndex][columnIndex].isContainBattleship = true;
-                    console.log(`marked cell as contain battleship: ${startRowIndex.toString()}, ${columnIndex}`)
-                }
+                this.cells[startRowIndex][columnIndex].isContainBattleship = true;
+                console.log(`marked cell as contain battleship: ${startRowIndex.toString()}, ${columnIndex}`)
             }
         }
         else{
             for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
-                if(this.isCellExist(rowIndex, startColumnIndex) && !this.isCellHaveOsculatedBattleship(rowIndex, startColumnIndex) && !this.isCellContainBattleship(rowIndex, startColumnIndex)){
-                    this.cells[rowIndex][startColumnIndex].isContainBattleship = true;
-                    console.log(`marked cell as contain battleship: ${rowIndex.toString()}, ${startColumnIndex}`)
-                }
+                this.cells[rowIndex][startColumnIndex].isContainBattleship = true;
+                console.log(`marked cell as contain battleship: ${rowIndex.toString()}, ${startColumnIndex}`)
             }
         }
     }

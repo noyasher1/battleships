@@ -2,10 +2,30 @@
 
 import BoardBase from './boardBase.js';
 import Cell from '../cell.js';
+import GameMovesEmitters from '../../events/gameMovesEvents/gameMovesEmitters.js';
 
 export default class OpponentBoard extends BoardBase{
     constructor(nodeId, rowsNumber, columnsNumber){
         super(nodeId, rowsNumber, columnsNumber);
+        this.isUserTurn = false;
+    }
+
+    addCellsClickListener(userSocket, messageBox){
+        for (let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++) {
+            for (let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++) {
+                this.cells[rowIndex][columnIndex].element.addEventListener("click", () => {
+                    console.log("cell clicked");
+                    if(!this.isUserTurn){
+                        console.log("clicked but not my turn");
+                        return;
+                    }
+                    console.log("clicked in my turn");
+                    if(!this.cells[rowIndex][columnIndex].isExposed){
+                        GameMovesEmitters.userMove(userSocket, rowIndex, columnIndex);
+                    }
+                })
+            }
+        }
     }
 
     initBoard(){
@@ -23,6 +43,23 @@ export default class OpponentBoard extends BoardBase{
 
     isCellContainBattleship(rowIndex, columnIndex){
         return this.cells[rowIndex][columnIndex].isContainBattleship;
+    }
+
+    prepareForOpponentTurn(messageBox, popFirstMessage = true){
+        if(popFirstMessage){
+            messageBox.popMessage();
+        }
+        messageBox.pushMessage("This is the opponent\'s turn.");
+        this.isUserTurn = false;
+        //freeze hover and click event
+    }
+
+    prepareForUserTurn(messageBox, popFirstMessage = true){
+        if(popFirstMessage){
+            messageBox.popMessage();
+        }
+        messageBox.pushMessage("This is your turn.");
+        this.isUserTurn = true;
     }
 
     render(){

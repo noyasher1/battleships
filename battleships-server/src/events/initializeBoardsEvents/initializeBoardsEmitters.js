@@ -28,9 +28,4 @@ module.exports = class InitializeBoardsEmitters{
     static opponentIsReadyToPlay(socket){
         socket.emit("OpponentIsReadyToPlay");
     }
-
-    static prepareForStartGame(user1, user2){
-        user1.socket.emit("PrepareForStartGame");
-        user2.socket.emit("PrepareForStartGame");
-    }
 };

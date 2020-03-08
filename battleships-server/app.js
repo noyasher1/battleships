@@ -4,6 +4,7 @@ const cors = require("cors");
 const http = require("http");
 const IoServer = require("socket.io");
 const initializeBoardsListeners = require("./src/events/initializeBoardsEvents/initializeBoardsListeners");
+const gameMovesListeners = require("./src/events/gameMovesEvents/gameMovesListeners");
 const sessions = require("./src/states/sessions.js").sessionsManager;
 
 const port = process.env.PORT || 3000;
@@ -36,6 +37,7 @@ io.on("connection", (socket) => {
     console.log(sessions.sessions.length);
 
     initializeBoardsListeners(socket, session, user, isNewUser);
+    gameMovesListeners(socket, session, user)
 });
 
 

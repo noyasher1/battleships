@@ -7,6 +7,12 @@ export default class Cell{
         this.element = element;
     }
 
+    markAsExposed(){
+        this.isExposed = true;
+        this.element.classList.remove("notExposed");
+        this.element.classList.add("exposed")
+    }
+
     markAsContainBattleship(){
         this.isContainBattleship = true;
         this.element.classList.add("battleshipPlaced")
