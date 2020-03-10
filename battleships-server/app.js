@@ -37,7 +37,7 @@ io.on("connection", (socket) => {
     console.log(sessions.sessions.length);
 
     initializeBoardsListeners(socket, session, user, isNewUser);
-    gameMovesListeners(socket, session, user)
+    gameMovesListeners(sessions.sessions, socket, session, user)
 });
 
 
