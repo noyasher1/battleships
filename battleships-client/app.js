@@ -27,8 +27,6 @@ function beforeunloadFunc(event){
     event.returnValue = ''; // When changing this value to value other then null or undefined, it prompt the message (in old browsers it prompt tje string set to the property)
 }
 
-window.addEventListener("beforeunload", beforeunloadFunc);
-
 messageBox.pushMessage("Please click on \"Find me an opponent\" button to start");
 
 let isStartButtonClicked = false;
@@ -36,6 +34,7 @@ startButton.onclick = () => {
     if(isStartButtonClicked){
         return;
     }
+    window.addEventListener("beforeunload", beforeunloadFunc);
     isStartButtonClicked = true;
     startButton.disabled = true;
     messageBox.popMessage();
