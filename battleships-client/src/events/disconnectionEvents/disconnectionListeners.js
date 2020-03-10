@@ -1,3 +1,4 @@
+'use strict';
 import DisconnectionHandlers from "../disconnectionEvents/disconnectionHandlers.js";
 
 export default (socket, beforeunloadFunc) => {

@@ -1,3 +1,4 @@
+'use strict';
 import GameMovesHandlers from './gameMovesHandlers.js'
 
 export default (socket, messageBox, userBoard, opponentBoard, beforeunloadFuncToAbort) => {

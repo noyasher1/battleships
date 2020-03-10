@@ -1,3 +1,5 @@
+'use strict';
+
 let isOpponentFinishedLocating = false;
 
 export default class InitializeBoardHandlers{

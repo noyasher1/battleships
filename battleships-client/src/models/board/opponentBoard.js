@@ -1,5 +1,4 @@
 'use strict';
-
 import BoardBase from './boardBase.js';
 import Cell from '../cell.js';
 import GameMovesEmitters from '../../events/gameMovesEvents/gameMovesEmitters.js';

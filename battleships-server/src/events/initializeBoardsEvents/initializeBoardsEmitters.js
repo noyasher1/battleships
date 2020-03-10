@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = class InitializeBoardsEmitters{
     static askForStartLocating(server) {
         server.emit("AskForStartLocating")

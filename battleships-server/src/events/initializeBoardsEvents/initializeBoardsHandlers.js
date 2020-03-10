@@ -1,3 +1,4 @@
+'use strict';
 const LocatingEmitters = require("./initializeBoardsEmitters");
 const GameMovesEmitters = require("../gameMovesEvents/gameMovesEmitters.js");
 const LocatingStatus = require("../../consts/locatingStatus");

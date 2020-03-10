@@ -1,3 +1,4 @@
+'use strict';
 const Cell = require("./cell");
 
 const boardLength = 10;

@@ -1,3 +1,5 @@
+'use strict';
+
 export default class GameMovesHandlers{
     static startGameHandler(userSocket, isStart, messageBox, userBoard, opponentBoard){
         messageBox.clear();

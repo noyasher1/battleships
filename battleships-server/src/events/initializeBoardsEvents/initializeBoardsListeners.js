@@ -1,3 +1,4 @@
+'use strict';
 const InitializeBoardsHandlers = require("./initializeBoardsHandlers");
 const InitializeBoardsEmitters = require("./initializeBoardsEmitters");
 

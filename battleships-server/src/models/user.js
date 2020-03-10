@@ -1,3 +1,4 @@
+'use strict';
 const Board = require('./board');
 
 module.exports = class User{

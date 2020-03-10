@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = class Session{
     constructor(){
         this.isActive = false;

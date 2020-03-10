@@ -1,3 +1,4 @@
+'use strict';
 import BattleshipLocator from "../../components/battleshipLocator.js";
 import InitializeBoardHandlers from './initializeBoardHandlers.js';
 

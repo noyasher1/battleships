@@ -1,3 +1,4 @@
+'use strict';
 const DisconnectionEmitters = require("./disconnectionEmitters.js");
 
 module.exports = class DisconnectionHandlers{

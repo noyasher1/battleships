@@ -5,7 +5,6 @@ import OpponentBoard from './src/models/board/opponentBoard.js';
 import initializeBoardListeners from './src/events/initializeBoardEvents/initializeBoardListeners.js';
 import gameMovesListeners from './src/events/gameMovesEvents/gameMovesListeners.js';
 import disconnectionListeners from './src/events/disconnectionEvents/disconnectionListeners.js';
-import BattleshipLocator from "./src/components/battleshipLocator.js";
 
 
 const BOARD_LENGTH = 10;

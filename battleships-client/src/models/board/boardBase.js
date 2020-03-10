@@ -1,5 +1,4 @@
 'use strict';
-
 import Cell from '../cell.js';
 
 export default class boardBase{

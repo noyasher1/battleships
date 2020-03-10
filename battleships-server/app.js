@@ -1,11 +1,10 @@
-const Session = require("./src/models/session");
-const EventHandlers = require("./src/events/initializeBoardsEvents/initializeBoardsHandlers");
+'use strict';
 const cors = require("cors");
 const http = require("http");
 const IoServer = require("socket.io");
 const initializeBoardsListeners = require("./src/events/initializeBoardsEvents/initializeBoardsListeners");
 const gameMovesListeners = require("./src/events/gameMovesEvents/gameMovesListeners");
-const disconnetionListeners = require("./src/events/disconnectionEvents/disconnectionListeners");
+const disconnectionListeners = require("./src/events/disconnectionEvents/disconnectionListeners");
 const sessions = require("./src/states/sessions.js").sessionsManager;
 
 const port = process.env.PORT || 3000;
@@ -34,7 +33,7 @@ io.on("connection", (socket) => {
 
     initializeBoardsListeners(socket, session, user, isNewUser);
     gameMovesListeners(sessions.sessions, socket, session, user);
-    disconnetionListeners(sessions.sessions, socket, session, user);
+    disconnectionListeners(sessions.sessions, socket, session, user);
 
 });
 

@@ -1,3 +1,5 @@
+'use strict';
+
 export default class DisconnectionHandlers {
     static opponentHasDisconnected(beforeunloadFuncToAbort) {
         if(!alert("Sorry :(\n"
