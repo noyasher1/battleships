@@ -10,7 +10,7 @@ import disconnectionListeners from './src/events/disconnectionEvents/disconnecti
 const BOARD_LENGTH = 10;
 const userBoardId = "user-board";
 const opponentBoardId = "opponent-board";
-const startButton = document.getElementById("startButton");
+const startButton = document.getElementById("start-button");
 
 const messageBox = new MessageBox();
 const userBoard = new UserBoard(userBoardId, BOARD_LENGTH, BOARD_LENGTH);

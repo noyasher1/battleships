@@ -2,6 +2,14 @@
 import InitializeBoardEmitters from "../events/initializeBoardEvents/initializeBoardEmitters.js"
 
 const buttonsDivId = "controllingBattleshipLocation";
+const moveRightButtonId = "move-right";
+const moveLeftButtonId = "move-left";
+const moveUpButtonId = "move-up";
+const moveDownButtonId = "move-down";
+const rotateRightButtonId = "rotate-right";
+const rotateLeftButtonId = "rotate-left";
+const resetBattleshipStateButtonId = "reset-battleship-state";
+const placeTheBattleshipButtonId = "place-the-battleship";
 
 export default class BattleshipLocator{
     constructor(server, boardToLocateOn, messageBox){
@@ -16,14 +24,14 @@ export default class BattleshipLocator{
         this.startRowIndex = 0;
         this.startColumnIndex = 0;
         this.addButtons();
-        this.moveRightButton = document.getElementById("moveRight");
-        this.moveLeftButton = document.getElementById("moveLeft");
-        this.moveUpButton = document.getElementById("moveUp");
-        this.moveDownButton = document.getElementById("moveDown");
-        this.rotateRightButton = document.getElementById("rotateRight");
-        this.rotateLeftButton = document.getElementById("rotateLeft");
-        this.resetBattleshipStateButton = document.getElementById("resetBattleshipState");
-        this.placeTheBattleshipButton = document.getElementById("placeTheBattleship");
+        this.moveRightButton = document.getElementById(moveRightButtonId);
+        this.moveLeftButton = document.getElementById(moveLeftButtonId);
+        this.moveUpButton = document.getElementById(moveUpButtonId);
+        this.moveDownButton = document.getElementById(moveDownButtonId);
+        this.rotateRightButton = document.getElementById(rotateRightButtonId);
+        this.rotateLeftButton = document.getElementById(rotateLeftButtonId);
+        this.resetBattleshipStateButton = document.getElementById(resetBattleshipStateButtonId);
+        this.placeTheBattleshipButton = document.getElementById(placeTheBattleshipButtonId);
         this.addButtonsListeners();
         this.addKeysListeners();
         this.shouldDisableAllButtons(true);
@@ -63,14 +71,14 @@ export default class BattleshipLocator{
         let buttonsDiv = document.createElement("div");
         buttonsDiv.id = buttonsDivId;
         buttonsDiv.innerHTML = `
-            <button class="locatingButton moveButton" id="moveUp">Move Up</button>
-            <button class="locatingButton moveButton" id="moveDown">Move Down</button>
-            <button class="locatingButton moveButton" id="moveRight">Move Right</button>
-            <button class="locatingButton moveButton" id="moveLeft">Move Left</button>
-            <button class="locatingButton moveButton rotateButton" id="rotateRight">Rotate Right</button>
-            <button class="locatingButton moveButton rotateButton" id="rotateLeft">Rotate Left</button>
-            <button class="locatingButton" id="placeTheBattleship">Place the battleship</button>
-            <button class="locatingButton" id="resetBattleshipState">Reset battleship state</button>`;
+            <button class="locatingButton moveButton" id=${moveUpButtonId}>Move Up</button>
+            <button class="locatingButton moveButton" id=${moveDownButtonId}>Move Down</button>
+            <button class="locatingButton moveButton" id=${moveRightButtonId}>Move Right</button>
+            <button class="locatingButton moveButton" id=${moveLeftButtonId}>Move Left</button>
+            <button class="locatingButton moveButton rotateButton" id=${rotateRightButtonId}>Rotate Right</button>
+            <button class="locatingButton moveButton rotateButton" id=${rotateLeftButtonId}>Rotate Left</button>
+            <button class="locatingButton" id=${placeTheBattleshipButtonId}>Place the battleship</button>
+            <button class="locatingButton" id=${resetBattleshipStateButtonId}>Reset battleship state</button>`;
         buttonsDiv.style.border = "solid";
         buttonsDiv.style.width = `${boardToLocateOnElement.querySelector("tbody").offsetWidth}px`;
         boardToLocateOnElement.appendChild(buttonsDiv);
@@ -97,7 +105,7 @@ export default class BattleshipLocator{
 
     initConsideredCells(){
         //TODO: should I renderBattleship all the board again every time, or in each moveX() function remove the last (irrelevant) cells and update their classes.
-        document.querySelectorAll(".consideredToContainBattleship").forEach(cell => cell.classList.remove("consideredToContainBattleship"))
+        document.querySelectorAll(".considered-to-contain-battleship").forEach(cell => cell.classList.remove("considered-to-contain-battleship"))
     }
 
     shouldDisableAllButtons(shouldDisable){

@@ -1,4 +1,4 @@
-#messageBox{
+#message-box{
     width: auto;
     text-align: left;
     height: 160px;
@@ -6,7 +6,7 @@
     white-space: pre-line;
 }
 
-#gameBoards{
+#game-boards{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -52,40 +52,40 @@ canvas {
     width: 30px;
 }
 
-#user-board td.exposed.battleshipPlaced:after{
+#user-board td.exposed.battleship-placed:after{
     background-image: url('icons/sniperSightIcon.svg');
 }
 
-#user-board td.exposed.lastExposed{
+#user-board td.exposed.last-exposed{
     box-shadow: 0 0 6px 3px #ffff00;
     z-index: 1;
 }
 
-.notExposed{
+.not-exposed{
     background: deepskyblue;
 }
 
-[class="notSet"]{
+[class="not-set"]{
     background: deepskyblue;
 }
 
-.consideredToContainBattleship{
+.considered-to-contain-battleship{
     background: #ff6e60;
 }
 
-.battleshipPlaced.consideredToContainBattleship{
+.battleship-placed.considered-to-contain-battleship{
     background: #755353;
 }
 
-.battleshipPlaced{
+.battleship-placed{
     background: #474747;
 }
 
-#opponent-board .notExposed{
+#opponent-board .not-exposed{
     background: white;
 }
 
-#opponent-board .notExposed:hover{
+#opponent-board .not-exposed:hover{
     background: lightgray;
 }
 
@@ -93,6 +93,6 @@ canvas {
     background: deepskyblue;
 }
 
-.exposed.battleshipPlaced{
+.exposed.battleship-placed{
     background: #474747;
 }

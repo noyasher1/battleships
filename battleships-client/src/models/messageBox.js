@@ -2,7 +2,7 @@
 
 export default class MessageBox{
     constructor(){
-        this.element = document.getElementById("messageBox");
+        this.element = document.getElementById("message-box");
     }
 
     clear(){

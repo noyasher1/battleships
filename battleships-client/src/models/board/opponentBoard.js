@@ -69,128 +69,128 @@ export default class OpponentBoard extends BoardBase{
         userBoardElement.innerHTML = `Opponent Board
         <table>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
                 <tr>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
-                    <td class="notExposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
+                    <td class="not-exposed"></td>
                 </tr>
             </table>`;
 
-        let parentDiv = document.getElementById("gameBoards");
+        let parentDiv = document.getElementById("game-boards");
         parentDiv.insertBefore(userBoardElement, parentDiv.childNodes[0] || null);
 
         this.mapBoard();
