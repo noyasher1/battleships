@@ -4,6 +4,7 @@ import UserBoard from './src/models/board/userBoard.js';
 import OpponentBoard from './src/models/board/opponentBoard.js';
 import initializeBoardListeners from './src/events/initializeBoardEvents/initializeBoardListeners.js';
 import gameMovesListeners from './src/events/gameMovesEvents/gameMovesListeners.js';
+import disconnectionListeners from './src/events/disconnectionEvents/disconnectionListeners.js';
 import BattleshipLocator from "./src/components/battleshipLocator.js";
 
 
@@ -18,7 +19,8 @@ const opponentBoard = new OpponentBoard(opponentBoardId, BOARD_LENGTH, BOARD_LEN
 
 function addGameListeners(socket, buttonToRemove){
     initializeBoardListeners(socket, messageBox, userBoard, opponentBoard, buttonToRemove);
-    gameMovesListeners(socket, messageBox, userBoard, opponentBoard, beforeunloadFunc)
+    gameMovesListeners(socket, messageBox, userBoard, opponentBoard, beforeunloadFunc);
+    disconnectionListeners(socket, beforeunloadFunc);
 }
 
 console.log("i am here");
@@ -40,7 +42,7 @@ startButton.onclick = () => {
     messageBox.popMessage();
     messageBox.pushMessage("Looking for an opponent. Please wait.");
     const socket = io.connect("localhost:3000");
-    addGameListeners(socket, startButton)
+    addGameListeners(socket, startButton);
 };
 
 
