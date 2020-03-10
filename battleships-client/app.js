@@ -23,8 +23,6 @@ function addGameListeners(socket, buttonToRemove){
     disconnectionListeners(socket, beforeunloadFunc);
 }
 
-console.log("i am here");
-
 function beforeunloadFunc(event){
     event.returnValue = ''; // When changing this value to value other then null or undefined, it prompt the message (in old browsers it prompt tje string set to the property)
 }

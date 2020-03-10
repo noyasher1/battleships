@@ -67,9 +67,7 @@ module.exports = class Sessions{
     }
 
     getSessionBySocket(socket){
-        console.log("trying to get session by socket")
         if(this.isSessionsArrayEmpty()){
-            console.log("returns undefined")
             return undefined;
         }
         for(let session of this.sessions){

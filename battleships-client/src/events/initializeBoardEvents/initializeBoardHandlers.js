@@ -10,7 +10,6 @@ export default class InitializeBoardHandlers{
             userBoard.locateABattleship(data.startRowIndex, data.startColumnIndex, data.length, data.isHorizontal);
             battleshipLocator.finishLocating();
         }
-        console.log(data.status);
     }
 
     static allBattleshipsAreLocatedHandler(battleshipLocator, messageBox, opponentBoard){

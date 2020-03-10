@@ -14,12 +14,9 @@ export default class OpponentBoard extends BoardBase{
         for (let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++) {
             for (let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++) {
                 this.cells[rowIndex][columnIndex].element.addEventListener("click", () => {
-                    console.log("cell clicked");
                     if(!this.isUserTurn){
-                        console.log("clicked but not my turn");
                         return;
                     }
-                    console.log("clicked in my turn");
                     if(!this.cells[rowIndex][columnIndex].isExposed){
                         GameMovesEmitters.userMove(userSocket, rowIndex, columnIndex);
                     }

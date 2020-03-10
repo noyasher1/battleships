@@ -1,11 +1,9 @@
 module.exports = class InitializeBoardsEmitters{
     static askForStartLocating(server) {
-        console.log("asking for start locating")
         server.emit("AskForStartLocating")
     }
 
     static askForABattleship(socket, length){
-        console.log("Sending request for locating battleship in a length of: " + length.toString());
         socket.emit("AskForABattleship", {
             length
         })

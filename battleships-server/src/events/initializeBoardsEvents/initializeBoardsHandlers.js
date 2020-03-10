@@ -4,7 +4,6 @@ const LocatingStatus = require("../../consts/locatingStatus");
 
 module.exports = class InitializeBoardsHandlers{
     static locateABattleshipHandler(session, user, event){
-        console.log("placing request");
         let startRowIndex = event.startRowIndex;
         let startColumnIndex = event.startColumnIndex;
         let length = event.length;
@@ -13,7 +12,6 @@ module.exports = class InitializeBoardsHandlers{
             user.board.markCellsAsContainBattleship(startRowIndex, startColumnIndex, length, isHorizontal);
             user.markLastBattleshipAsLocated();
             LocatingEmitters.locateABattleshipStatus(user.socket, startRowIndex, startColumnIndex, length, isHorizontal, LocatingStatus.SUCCEED);
-            console.log("Battleship placed");
             if(!user.isFinishedLocating){
                 LocatingEmitters.askForABattleship(user.socket, user.nextBattleship().length);
             }

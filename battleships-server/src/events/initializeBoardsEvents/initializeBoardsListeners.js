@@ -14,7 +14,7 @@ module.exports = (socket, session, user, isNewUser) => {
             InitializeBoardsEmitters.askForABattleship(user2.socket, user2.nextBattleship().length);
         }
     }
-    console.log("length = " + (user.nextBattleship().length).toString());
+
     socket.on("LocateABattleship", (event) => {
         InitializeBoardsHandlers.locateABattleshipHandler(session, user, event);
     });

@@ -261,7 +261,6 @@ export default class BattleshipLocator{
         if(!this.isActive){
             return;
         }
-        console.log("start row index before change = " + this.startRowIndex.toString());
         if(this.validateMovingDownPossibility()){
             this.startRowIndex += 1;
             this.renderBattleship();

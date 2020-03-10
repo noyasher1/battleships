@@ -27,19 +27,16 @@ module.exports = class Board{
     }
 
     markCellsAsContainBattleship(startRowIndex, startColumnIndex, length, isHorizontal){
-        console.log("trying to mark cells as contain battleship");
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
                 this.cells[startRowIndex][columnIndex].isContainBattleship = true;
                 this.cellsContainBattleship.push({rowIndex: startRowIndex, columnIndex, isExposed: false});
-                console.log(`marked cell as contain battleship: ${startRowIndex.toString()}, ${columnIndex}`)
             }
         }
         else{
             for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
                 this.cells[rowIndex][startColumnIndex].isContainBattleship = true;
                 this.cellsContainBattleship.push({rowIndex, columnIndex: startColumnIndex, isExposed: false});
-                console.log(`marked cell as contain battleship: ${rowIndex.toString()}, ${startColumnIndex}`)
             }
         }
     }
@@ -144,10 +141,8 @@ module.exports = class Board{
     areBattleshipsTotallyExposed(){
         for(let containedBattleshipCell of this.cellsContainBattleship){
             if(!containedBattleshipCell.isExposed){
-                console.log(`cell not exposed: ${containedBattleshipCell.rowIndex}, ${containedBattleshipCell.columnIndex}`);
                 return false;
             }
-            console.log(`cell exposed: ${containedBattleshipCell.rowIndex}, ${containedBattleshipCell.columnIndex}`);
         }
         return true;
     }

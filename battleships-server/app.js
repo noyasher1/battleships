@@ -20,22 +20,17 @@ io.on("connection", (socket) => {
     let session;// = undefined;
     let user;// = undefined;
     let isNewUser;
-    console.log("is socket already subscribe = " + sessions.isSocketAlreadySubscribe(socket));
     if(!sessions.isSocketAlreadySubscribe(socket)){
-        console.log("if");
         isNewUser = true;
         let {session: usedSession, user: newUser} = sessions.subscribeUserSocketForAvailableSession(socket);
         session = usedSession;
         user = newUser;
     }
     else{
-        console.log("else");
         isNewUser = false;
         user = sessions.getUserBySocket(socket);
         session = sessions.getSessionBySocket(socket);
     }
-
-    console.log(sessions.sessions.length);
 
     initializeBoardsListeners(socket, session, user, isNewUser);
     gameMovesListeners(sessions.sessions, socket, session, user);
