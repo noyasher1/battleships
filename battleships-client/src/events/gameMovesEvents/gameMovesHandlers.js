@@ -18,7 +18,7 @@ export default class GameMovesHandlers{
 
     }
 
-    static userMoveStatusHandler(data, messageBox, opponentBoard, userBoard){
+    static userMoveStatusHandler(data, messageBox, opponentBoard, userBoard, beforeunloadFuncToAbort){
         console.log("return status");
         if(data.isSucceed){
             console.log("return succeed status");
@@ -31,7 +31,11 @@ export default class GameMovesHandlers{
                 console.log("is winner = " + data.amIWinner.toString());
                 if(data.amIWinner){
                     console.log("you are the winner");
-                    alert("you are the winner");
+                    //alert("you are the winner");
+                    if(!alert("you are the winner")){
+                        window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
+                        window.location.reload();
+                    }
                 }
             }
             else{
@@ -41,7 +45,7 @@ export default class GameMovesHandlers{
         }
     }
 
-    static opponentMoveHandler(data, messageBox, userBoard, opponentBoard){
+    static opponentMoveHandler(data, messageBox, userBoard, opponentBoard, beforeunloadFuncToAbort){
         let rowIndex = data.rowIndex;
         let columnIndex = data.columnIndex;
         userBoard.unmarkLastCellAsExposed();
@@ -51,7 +55,11 @@ export default class GameMovesHandlers{
             console.log("is looser = " + data.isOpponentWon.toString());
             if(data.isOpponentWon){
                 console.log("You are a looser");
-                alert("You are a looser");
+                //alert("You are a looser");
+                if(!alert("You are a looser")){
+                    window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
+                    window.location.reload();
+                }
             }
         }
         else{
