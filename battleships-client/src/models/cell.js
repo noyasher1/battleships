@@ -21,4 +21,12 @@ export default class Cell{
     markAsConsideredOfPlacingBattleship(){
         this.element.classList.add("consideredToContainBattleship")
     }
+
+    markAsLastExposed(){
+        this.element.classList.add("lastExposed");
+    }
+
+    unmarkAsLastExposed(){
+        this.element.classList.remove("lastExposed");
+    }
 }

@@ -8,15 +8,17 @@ export default class GameMovesHandlers{
         messageBox.pushMessage("In your turn, click on a cell you want to expose.\n"
             + "The winner is the first user that will expose all the opponent\'s battleships.");
         if(isStart){
-            opponentBoard.prepareForUserTurn(messageBox, false);
+            opponentBoard.prepareForUserTurn();
+            userBoard.prepareForUserTurn(messageBox, false);
         }
         else{
+            userBoard.prepareForOpponentTurn();
             opponentBoard.prepareForOpponentTurn(messageBox, false);
         }
 
     }
 
-    static userMoveStatusHandler(data, messageBox, opponentBoard){
+    static userMoveStatusHandler(data, messageBox, opponentBoard, userBoard){
         console.log("return status");
         if(data.isSucceed){
             console.log("return succeed status");
@@ -33,6 +35,7 @@ export default class GameMovesHandlers{
                 }
             }
             else{
+                userBoard.prepareForOpponentTurn();
                 opponentBoard.prepareForOpponentTurn(messageBox);
             }
         }
@@ -41,6 +44,7 @@ export default class GameMovesHandlers{
     static opponentMoveHandler(data, messageBox, userBoard, opponentBoard){
         let rowIndex = data.rowIndex;
         let columnIndex = data.columnIndex;
+        userBoard.unmarkLastCellAsExposed();
         userBoard.markCellAsExposed(rowIndex, columnIndex);
         if(data.isContainBattleship){
             userBoard.markCellAsContainBattleship(rowIndex, columnIndex);
@@ -51,7 +55,8 @@ export default class GameMovesHandlers{
             }
         }
         else{
-            opponentBoard.prepareForUserTurn(messageBox)
+            opponentBoard.prepareForUserTurn();
+            userBoard.prepareForUserTurn(messageBox)
         }
     }
 }

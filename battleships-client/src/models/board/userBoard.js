@@ -6,6 +6,7 @@ import Cell from '../cell.js';
 export default class UserBoard extends BoardBase{
     constructor(nodeId, rowsNumber, columnsNumber) {
         super(nodeId, rowsNumber, columnsNumber);
+        this.lastExposedCell = undefined;
     }
 
     initBoard(){
@@ -14,6 +15,32 @@ export default class UserBoard extends BoardBase{
             for (let j = 0; j < this.columnsNumber; j++) {
                 this.cells[i][j] = new Cell();
             }
+        }
+    }
+
+    prepareForUserTurn(messageBox, popFirstMessage = true){
+        if(popFirstMessage){
+            messageBox.popMessage();
+        }
+        messageBox.pushMessage("This is your turn.");
+    }
+
+    prepareForOpponentTurn(){
+        if(this.lastExposedCell !== undefined){
+            this.lastExposedCell.unmarkAsLastExposed();
+        }
+        //freeze hover and click event
+    }
+
+    markCellAsExposed(rowIndex, columnIndex) {
+        super.markCellAsExposed(rowIndex, columnIndex);
+        this.lastExposedCell = this.cells[rowIndex][columnIndex];
+        this.lastExposedCell.markAsLastExposed();
+    }
+
+    unmarkLastCellAsExposed(){
+        if(this.lastExposedCell !== undefined){
+            this.lastExposedCell.unmarkAsLastExposed();
         }
     }
 

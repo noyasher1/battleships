@@ -45,22 +45,25 @@ export default class OpponentBoard extends BoardBase{
         return this.cells[rowIndex][columnIndex].isContainBattleship;
     }
 
+    prepareForUserTurn(){
+        this.isUserTurn = true;
+    }
+
     prepareForOpponentTurn(messageBox, popFirstMessage = true){
         if(popFirstMessage){
             messageBox.popMessage();
         }
         messageBox.pushMessage("This is the opponent\'s turn.");
         this.isUserTurn = false;
+        //this.unmarkLastCellAsExposed();
         //freeze hover and click event
     }
 
-    prepareForUserTurn(messageBox, popFirstMessage = true){
-        if(popFirstMessage){
-            messageBox.popMessage();
+    /*unmarkLastCellAsExposed(){
+        if(this.lastExposedCell !== undefined){
+            this.lastExposedCell.unmarkAsLastExposed();
         }
-        messageBox.pushMessage("This is your turn.");
-        this.isUserTurn = true;
-    }
+    }*/
 
     render(){
         let userBoardElement = document.createElement("div");

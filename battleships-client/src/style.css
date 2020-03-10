@@ -56,6 +56,11 @@ canvas {
     background-image: url('icons/sniperSightIcon.svg');
 }
 
+#user-board td.exposed.lastExposed{
+    box-shadow: 0 0 6px 3px #ffff00;
+    z-index: 1;
+}
+
 .notExposed{
     background: deepskyblue;
 }

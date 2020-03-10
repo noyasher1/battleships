@@ -7,7 +7,7 @@ export default (socket, messageBox, userBoard, opponentBoard) => {
 
     socket.on("UserMoveStatus", (data) =>{
         console.log("got userMovesStatus");
-        GameMovesHandlers.userMoveStatusHandler(data, messageBox, opponentBoard)
+        GameMovesHandlers.userMoveStatusHandler(data, messageBox, opponentBoard, userBoard)
     });
 
     socket.on("OpponentMove", (data) => {
