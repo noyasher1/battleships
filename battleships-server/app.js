@@ -1,5 +1,4 @@
 'use strict';
-const cors = require("cors");
 const http = require("http");
 const IoServer = require("socket.io");
 const initializeBoardsListeners = require("./src/events/initializeBoardsEvents/initializeBoardsListeners");
