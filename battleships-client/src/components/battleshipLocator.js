@@ -103,8 +103,7 @@ export default class BattleshipLocator{
         this.startColumnIndex = 0;
     }
 
-    initConsideredCells(){
-        //TODO: should I renderBattleship all the board again every time, or in each moveX() function remove the last (irrelevant) cells and update their classes.
+    initCellsConsideredToLocateBattleship(){
         document.querySelectorAll(".considered-to-contain-battleship").forEach(cell => cell.classList.remove("considered-to-contain-battleship"))
     }
 
@@ -120,12 +119,7 @@ export default class BattleshipLocator{
     }
 
     disableButtonIfNecessary(buttonElement, isPossibleFunction){
-        if(!isPossibleFunction.call(this)){
-            buttonElement.disabled = true;
-        }
-        else{
-            buttonElement.disabled = false;
-        }
+        buttonElement.disabled = !isPossibleFunction.call(this);
     }
 
     addButtonsListeners() {
@@ -305,7 +299,7 @@ export default class BattleshipLocator{
     }
 
     renderBattleship(){
-        this.initConsideredCells();
+        this.initCellsConsideredToLocateBattleship();
         if(!this.isActive){
             return;
         }

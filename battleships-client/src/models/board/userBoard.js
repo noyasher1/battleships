@@ -8,15 +8,6 @@ export default class UserBoard extends BoardBase{
         this.lastExposedCell = undefined;
     }
 
-    initBoard(){
-        for (let i = 0; i < this.rowsNumber; i++) {
-            this.cells.push([]);
-            for (let j = 0; j < this.columnsNumber; j++) {
-                this.cells[i][j] = new Cell();
-            }
-        }
-    }
-
     prepareForUserTurn(messageBox, popFirstMessage = true){
         if(popFirstMessage){
             messageBox.popMessage();

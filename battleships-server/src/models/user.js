@@ -2,7 +2,7 @@
 const Board = require('./board');
 
 module.exports = class User{
-    constructor(socket, battleshipsToLocate){
+    constructor(socket){
         this.socket = socket;
         this.board = new Board();
         this.battleshipsToLocate = [

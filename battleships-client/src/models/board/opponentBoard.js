@@ -24,23 +24,6 @@ export default class OpponentBoard extends BoardBase{
         }
     }
 
-    initBoard(){
-        for (let i = 0; i < this.rowsNumber; i++) {
-            this.cells.push([]);
-            for (let j = 0; j < this.columnsNumber; j++) {
-                this.cells[i][j] = new Cell();
-            }
-        }
-    }
-
-    isCellExposed(rowIndex, columnIndex){
-        return this.cells[rowIndex][columnIndex].isExposed;
-    }
-
-    isCellContainBattleship(rowIndex, columnIndex){
-        return this.cells[rowIndex][columnIndex].isContainBattleship;
-    }
-
     prepareForUserTurn(){
         this.isUserTurn = true;
     }
@@ -51,15 +34,7 @@ export default class OpponentBoard extends BoardBase{
         }
         messageBox.pushMessage("This is the opponent\'s turn.");
         this.isUserTurn = false;
-        //this.unmarkLastCellAsExposed();
-        //freeze hover and click event
     }
-
-    /*unmarkLastCellAsExposed(){
-        if(this.lastExposedCell !== undefined){
-            this.lastExposedCell.unmarkAsLastExposed();
-        }
-    }*/
 
     render(){
         let userBoardElement = document.createElement("div");

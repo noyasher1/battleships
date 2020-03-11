@@ -12,10 +12,9 @@ const app = http.createServer();
 
 const io = new IoServer(app);
 
-//new EventListener(io);  // Bind event listeners to the server object
-
 
 io.on("connection", (socket) => {
+    console.log("new connection");
     let session;// = undefined;
     let user;// = undefined;
     let isNewUser;
@@ -36,8 +35,5 @@ io.on("connection", (socket) => {
     disconnectionListeners(sessions.sessions, socket, session, user);
 
 });
-
-
-//startLogic(io);  // Call game logic
 
 app.listen(port);  // Start running server
