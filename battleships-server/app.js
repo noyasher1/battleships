@@ -14,8 +14,8 @@ const io = new IoServer(app);
 
 io.on("connection", (socket) => {
     console.log("new connection");
-    let session;// = undefined;
-    let user;// = undefined;
+    let session;
+    let user;
     let isNewUser;
     if(!sessions.isSocketAlreadySubscribe(socket)){
         isNewUser = true;
@@ -31,8 +31,7 @@ io.on("connection", (socket) => {
 
     initializeBoardsListeners(socket, session, user, isNewUser);
     gameMovesListeners(sessions.sessions, socket, session, user);
-    disconnectionListeners(sessions.sessions, socket, session, user);
-
+    disconnectionListeners(sessions, socket, user);
 });
 
-app.listen(port);  // Start running server
+app.listen(port);
