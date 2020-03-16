@@ -116,22 +116,22 @@ module.exports = class Board{
         }
         return false;
     }
-    
-    isCellExist(rowIndex, columnIndex){
+
+    static isCellExist(rowIndex, columnIndex){
         return rowIndex >= 0 && rowIndex <= boardLastIndex && columnIndex >= 0 && columnIndex <= boardLastIndex;
     }
 
     areCellsAvailableForLocating(startRowIndex, startColumnIndex, length, isHorizontal){
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
-                if(!this.isCellExist(startRowIndex, columnIndex) || this.isCellHaveOsculatedBattleship(startRowIndex, columnIndex) || this.isCellContainBattleship(startRowIndex, columnIndex)){
+                if(!Board.isCellExist(startRowIndex, columnIndex) || this.isCellHaveOsculatedBattleship(startRowIndex, columnIndex) || this.isCellContainBattleship(startRowIndex, columnIndex)){
                     return false;
                 }
             }
         }
         else{
             for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
-                if(!this.isCellExist(rowIndex, startColumnIndex) || this.isCellHaveOsculatedBattleship(rowIndex, startColumnIndex) || this.isCellContainBattleship(rowIndex, startColumnIndex)){
+                if(!Board.isCellExist(rowIndex, startColumnIndex) || this.isCellHaveOsculatedBattleship(rowIndex, startColumnIndex) || this.isCellContainBattleship(rowIndex, startColumnIndex)){
                     return false;
                 }
             }
