@@ -67,7 +67,7 @@ export default class BattleshipLocator{
     }
 
     addButtons(){
-        let boardToLocateOnElement = this.boardToLocateOnElement.element;
+        let boardToLocateElementOn = this.boardToLocateOnElement.element;
         let buttonsDiv = document.createElement("div");
         buttonsDiv.id = buttonsDivId;
         buttonsDiv.innerHTML = `
@@ -80,8 +80,8 @@ export default class BattleshipLocator{
             <button class="locatingButton" id=${placeTheBattleshipButtonId}>Place the battleship</button>
             <button class="locatingButton" id=${resetBattleshipStateButtonId}>Reset battleship state</button>`;
         buttonsDiv.style.border = "solid";
-        buttonsDiv.style.width = `${boardToLocateOnElement.querySelector("tbody").offsetWidth}px`;
-        boardToLocateOnElement.appendChild(buttonsDiv);
+        buttonsDiv.style.width = `${boardToLocateElementOn.querySelector("tbody").offsetWidth}px`;
+        boardToLocateElementOn.appendChild(buttonsDiv);
     }
 
     removeButtons(){
