@@ -120,3 +120,8 @@ canvas {
     flex-direction: column;
     text-align: center;
 }
+
+#start-button {
+    margin: 0 auto;
+    display: block;
+}
