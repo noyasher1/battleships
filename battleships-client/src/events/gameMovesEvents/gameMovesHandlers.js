@@ -1,4 +1,5 @@
 'use strict';
+import AlertModal from '../../components/alertModal.js'
 
 export default class GameMovesHandlers{
     static startGameHandler(userSocket, isStart, messageBox, userBoard, opponentBoard){
@@ -27,10 +28,14 @@ export default class GameMovesHandlers{
             if(data.isContainBattleship){
                 opponentBoard.markCellAsContainBattleship(rowIndex, columnIndex);
                 if(data.amIWinner){
-                    if(!alert("You are the winner")){
+                    new AlertModal("You are the winner", () => {
                         window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
                         window.location.reload();
-                    }
+                    });
+                    /*if(!alert("You are the winner")){
+                        window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
+                        window.location.reload();
+                    }*/
                 }
             }
             else{
@@ -48,10 +53,14 @@ export default class GameMovesHandlers{
         if(data.isContainBattleship){
             userBoard.markCellAsContainBattleship(rowIndex, columnIndex);
             if(data.isOpponentWon){
-                if(!alert("You are a looser")){
+                new AlertModal("You are a looser", () => {
                     window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
                     window.location.reload();
-                }
+                });
+                /*if(!alert("You are a looser")){
+                    window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
+                    window.location.reload();
+                }*/
             }
         }
         else{
