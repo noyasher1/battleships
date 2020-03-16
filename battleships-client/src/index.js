@@ -1,10 +1,10 @@
 'use strict';
-import MessageBox from './src/models/messageBox.js';
-import UserBoard from './src/models/board/userBoard.js';
-import OpponentBoard from './src/models/board/opponentBoard.js';
-import initializeBoardListeners from './src/events/initializeBoardEvents/initializeBoardListeners.js';
-import gameMovesListeners from './src/events/gameMovesEvents/gameMovesListeners.js';
-import disconnectionListeners from './src/events/disconnectionEvents/disconnectionListeners.js';
+import MessageBox from './models/messageBox.js';
+import UserBoard from './models/board/userBoard.js';
+import OpponentBoard from './models/board/opponentBoard.js';
+import initializeBoardListeners from './events/initializeBoardEvents/initializeBoardListeners.js';
+import gameMovesListeners from './events/gameMovesEvents/gameMovesListeners.js';
+import disconnectionListeners from './events/disconnectionEvents/disconnectionListeners.js';
 
 
 const BOARD_LENGTH = 10;
