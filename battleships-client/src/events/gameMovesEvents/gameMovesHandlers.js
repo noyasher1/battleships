@@ -21,7 +21,7 @@ export default class GameMovesHandlers{
 
     }
 
-    static userMoveStatusHandler(data, messageBox, opponentBoard, userBoard, beforeunloadFuncToAbort){
+    static userMoveStatusHandler(data, messageBox, opponentBoard, userBoard){
         if(data.isSucceed){
             let rowIndex = data.rowIndex;
             let columnIndex = data.columnIndex;
@@ -29,11 +29,7 @@ export default class GameMovesHandlers{
             if(data.isContainBattleship){
                 opponentBoard.markCellAsContainBattleship(rowIndex, columnIndex);
                 if(data.amIWinner){
-                    new AlertModal("You are the winner", () => resetGame(beforeunloadFuncToAbort));
-                    // new AlertModal("You are the winner", () => {
-                    //     window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
-                    //     window.location.reload();
-                    // });
+                    new AlertModal("You are the winner", () => resetGame());
                 }
             }
             else{
@@ -43,7 +39,7 @@ export default class GameMovesHandlers{
         }
     }
 
-    static opponentMoveHandler(data, messageBox, userBoard, opponentBoard, beforeunloadFuncToAbort){
+    static opponentMoveHandler(data, messageBox, userBoard, opponentBoard){
         let rowIndex = data.rowIndex;
         let columnIndex = data.columnIndex;
         userBoard.unmarkLastCellAsExposed();
@@ -51,11 +47,7 @@ export default class GameMovesHandlers{
         if(data.isContainBattleship){
             userBoard.markCellAsContainBattleship(rowIndex, columnIndex);
             if(data.isOpponentWon){
-                new AlertModal("You are a looser", () => resetGame(beforeunloadFuncToAbort));
-                // new AlertModal("You are a looser", () => {
-                //     window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
-                //     window.location.reload();
-                // });
+                new AlertModal("You are a looser", () => resetGame());
             }
         }
         else{

@@ -18,10 +18,9 @@ const userBoard = new UserBoard(userBoardId);
 const opponentBoard = new OpponentBoard(opponentBoardId);
 
 function addGameListeners(socket, buttonToRemove){
-    console.log(alertBeforeUnload);
     initializeBoardListeners(socket, messageBox, userBoard, opponentBoard, buttonToRemove);
-    gameMovesListeners(socket, messageBox, userBoard, opponentBoard, alertBeforeUnload);
-    disconnectionListeners(socket, alertBeforeUnload);
+    gameMovesListeners(socket, messageBox, userBoard, opponentBoard);
+    disconnectionListeners(socket);
 }
 
 /*function beforeunloadFunc(event){
