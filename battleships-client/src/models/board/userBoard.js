@@ -5,7 +5,7 @@ import Cell from '../cell.js';
 export default class UserBoard extends BoardBase{
     constructor(nodeId) {
         super(nodeId);
-        this.lastExposedCell = undefined;
+        this.lastExposedCell = null;
     }
 
     prepareForUserTurn(messageBox, popFirstMessage = true){
@@ -16,7 +16,7 @@ export default class UserBoard extends BoardBase{
     }
 
     prepareForOpponentTurn(){
-        if(this.lastExposedCell !== undefined){
+        if(this.lastExposedCell !== null){
             this.lastExposedCell.unmarkAsLastExposed();
         }
         //freeze hover and click event
@@ -29,7 +29,7 @@ export default class UserBoard extends BoardBase{
     }
 
     unmarkLastCellAsExposed(){
-        if(this.lastExposedCell !== undefined){
+        if(this.lastExposedCell !== null){
             this.lastExposedCell.unmarkAsLastExposed();
         }
     }

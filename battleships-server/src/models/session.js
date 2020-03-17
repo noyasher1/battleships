@@ -3,12 +3,12 @@
 module.exports = class Session{
     constructor(){
         this.isActive = false;
-        this.user1 = undefined;
-        this.user2 = undefined;
+        this.user1 = null;
+        this.user2 = null;
     }
 
     get isPopulated(){
-        return this.user1 !== undefined && this.user2 !== undefined;
+        return this.user1 && this.user2;
     }
 
     getOpponent(user){

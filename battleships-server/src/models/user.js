@@ -30,7 +30,7 @@ module.exports = class User{
     }
 
     get isFinishedLocating(){
-        return this.nextBattleship() === undefined;
+        return !this.nextBattleship();
     }
 
     nextBattleship(){
@@ -40,7 +40,7 @@ module.exports = class User{
             }
         }
 
-        return undefined;
+        return null;
     }
 
     markLastBattleshipAsLocated(){

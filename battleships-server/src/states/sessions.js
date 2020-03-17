@@ -16,8 +16,8 @@ module.exports = class Sessions{
             return false;
         }
         for(let session in this.sessions){
-            if ((!session.user1 === undefined && session.user1.socket === socket)
-                || !session.user2 === undefined && session.user2.socket === socket){
+            if ((session.user1 && session.user1.socket === socket)
+                || session.user2 && session.user2.socket === socket){
                 if (session.user1.socket === socket || session.user2.socket === socket)
                     return true;
             }
@@ -69,7 +69,7 @@ module.exports = class Sessions{
 
     getSessionBySocket(socket){
         if(this.isSessionsArrayEmpty()){
-            return undefined;
+            return null;
         }
         for(let session of this.sessions){
             if(session.user1 && session.user1.socket === socket
@@ -77,12 +77,12 @@ module.exports = class Sessions{
                 return session;
             }
         }
-        return undefined;
+        return null;
     }
 
     getUserBySocket(socket){
         if(this.isSessionsArrayEmpty()){
-            return undefined;
+            return null;
         }
         let userSession = this.getSessionBySocket(socket);
         if (userSession.user1.socket === socket){

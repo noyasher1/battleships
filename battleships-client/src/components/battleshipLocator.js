@@ -19,7 +19,7 @@ export default class BattleshipLocator{
         this.boardHeightCellsNumber = this.boardToLocateOnElement.columnsNumber;
         this.boardWidthCellsNumber = this.boardToLocateOnElement.rowsNumber;
         this.messageBox = messageBox;
-        this.length = undefined;
+        this.length = null;
         this.isHorizontal = true;
         this.startRowIndex = 0;
         this.startColumnIndex = 0;
@@ -51,7 +51,7 @@ export default class BattleshipLocator{
 
     finishLocating(){
         this.isActive = false;
-        this.length = undefined;
+        this.length = null;
         this.initLocation();
         this.renderBattleship();
         this.shouldDisableAllButtons(true);
