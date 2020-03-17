@@ -43,134 +43,32 @@ export default class UserBoard extends BoardBase{
         }
     }
 
+    createHTMLRow(){
+        let htmlRow = `<tr>`;
+        for(let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++){
+            htmlRow += '\n\t<td class="not-set"></td>';
+        }
+        htmlRow += '\n</tr>';
+
+        return htmlRow;
+    }
+
+    createHTMLTable(){
+        let htmlTable = `<table>`;
+        for(let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++){
+            htmlTable += `\n\t${this.createHTMLRow()}`;
+        }
+        htmlTable += '\n</table>';
+
+        return htmlTable;
+    }
+
     render(){
         let userBoardElement = document.createElement("div");
         userBoardElement.id = "user-board";
         userBoardElement.tabIndex = 0;
 
-        userBoardElement.innerHTML = `Your Board
-        <table>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-                <tr>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                     <td class="not-set"></td>
-                </tr>
-            </table>`;
+        userBoardElement.innerHTML = `Your Board\r${this.createHTMLTable()}`;
 
         let parentDiv = document.getElementById("game-boards");
         parentDiv.insertBefore(userBoardElement, parentDiv.childNodes[0] || null);

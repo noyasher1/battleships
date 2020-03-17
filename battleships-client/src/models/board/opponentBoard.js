@@ -36,134 +36,31 @@ export default class OpponentBoard extends BoardBase{
         this.isUserTurn = false;
     }
 
+    createHTMLRow(){
+        let htmlRow = `<tr>`;
+        for(let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++){
+            htmlRow += '\n\t<td class="not-exposed"></td>';
+        }
+        htmlRow += '\n</tr>';
+
+        return htmlRow;
+    }
+
+    createHTMLTable(){
+        let htmlTable = `<table>`;
+        for(let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++){
+            htmlTable += `\n\t${this.createHTMLRow()}`;
+        }
+        htmlTable += '\n</table>';
+
+        return htmlTable;
+    }
+
     render(){
         let userBoardElement = document.createElement("div");
         userBoardElement.id = "opponent-board";
-        userBoardElement.innerText = "";
 
-        userBoardElement.innerHTML = `Opponent Board
-        <table>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-                <tr>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                    <td class="not-exposed"></td>
-                </tr>
-            </table>`;
+        userBoardElement.innerHTML = `Opponent Board\r${this.createHTMLTable()}`;
 
         let parentDiv = document.getElementById("game-boards");
         parentDiv.insertBefore(userBoardElement, parentDiv.childNodes[0] || null);
