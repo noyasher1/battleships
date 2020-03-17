@@ -1,1 +1,1 @@
-# battleships-websockets
+# battleships
