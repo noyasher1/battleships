@@ -119,6 +119,7 @@ canvas {
     width: 60%;
     flex-direction: column;
     text-align: center;
+    white-space: pre-line;
 }
 
 #start-button {
