@@ -7,7 +7,7 @@ const gameMovesListeners = require("./src/events/gameMovesEvents/gameMovesListen
 const disconnectionListeners = require("./src/events/disconnectionEvents/disconnectionListeners");
 const sessions = require("./src/states/sessions.js").sessionsManager;
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || CONFIG.port;
 const app = http.createServer();
 
 const io = new IoServer(app);
