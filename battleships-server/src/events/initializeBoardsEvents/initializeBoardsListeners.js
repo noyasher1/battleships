@@ -2,15 +2,15 @@
 const InitializeBoardsHandlers = require("./initializeBoardsHandlers");
 const InitializeBoardsEmitters = require("./initializeBoardsEmitters");
 
-module.exports = (socket, session, user, isNewUser) => {
+module.exports = (socket, session, user, isNewUser, rowsNumber, columnsNumber) => {
     if(isNewUser){
         if(session.isPopulated)
         {
             session.isActive = true;
             let user1 = session.user1;
             let user2 = session.user2;
-            InitializeBoardsEmitters.askForStartLocating(user1.socket);
-            InitializeBoardsEmitters.askForStartLocating(user2.socket);
+            InitializeBoardsEmitters.askForStartLocating(user1.socket, rowsNumber, columnsNumber);
+            InitializeBoardsEmitters.askForStartLocating(user2.socket, rowsNumber, columnsNumber);
             InitializeBoardsEmitters.askForABattleship(user1.socket, user1.nextBattleship().length);
             InitializeBoardsEmitters.askForABattleship(user2.socket, user2.nextBattleship().length);
         }

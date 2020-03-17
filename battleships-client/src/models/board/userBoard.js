@@ -3,8 +3,8 @@ import BoardBase from './boardBase.js';
 import Cell from '../cell.js';
 
 export default class UserBoard extends BoardBase{
-    constructor(nodeId, rowsNumber, columnsNumber) {
-        super(nodeId, rowsNumber, columnsNumber);
+    constructor(nodeId) {
+        super(nodeId);
         this.lastExposedCell = undefined;
     }
 

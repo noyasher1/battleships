@@ -2,10 +2,10 @@
 import Cell from '../cell.js';
 
 export default class boardBase{
-    constructor(nodeId, rowsNumber, columnsNumber){
+    constructor(nodeId){
         this.id = nodeId;
-        this.rowsNumber = rowsNumber;
-        this.columnsNumber = columnsNumber;
+        this.rowsNumber = 10;
+        this.columnsNumber = 10;
         this.cells = [];
         this.element;
     }

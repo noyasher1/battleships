@@ -1,4 +1,5 @@
 'use strict';
+const CONFIG = require("./config");
 const http = require("http");
 const IoServer = require("socket.io");
 const initializeBoardsListeners = require("./src/events/initializeBoardsEvents/initializeBoardsListeners");
@@ -29,7 +30,7 @@ io.on("connection", (socket) => {
         session = sessions.getSessionBySocket(socket);
     }
 
-    initializeBoardsListeners(socket, session, user, isNewUser);
+    initializeBoardsListeners(socket, session, user, isNewUser, CONFIG.rowsNumber, CONFIG.columnsNumber);
     gameMovesListeners(sessions.sessions, socket, session, user);
     disconnectionListeners(sessions, socket, user);
 });

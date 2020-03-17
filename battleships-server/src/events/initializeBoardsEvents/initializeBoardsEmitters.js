@@ -1,8 +1,11 @@
 'use strict';
 
 module.exports = class InitializeBoardsEmitters{
-    static askForStartLocating(server) {
-        server.emit("AskForStartLocating")
+    static askForStartLocating(server, rowsNumber, columnsNumber) {
+        server.emit("AskForStartLocating", {
+            rowsNumber,
+            columnsNumber
+        })
     }
 
     static askForABattleship(socket, length){

@@ -4,8 +4,8 @@ import Cell from '../cell.js';
 import GameMovesEmitters from '../../events/gameMovesEvents/gameMovesEmitters.js';
 
 export default class OpponentBoard extends BoardBase{
-    constructor(nodeId, rowsNumber, columnsNumber){
-        super(nodeId, rowsNumber, columnsNumber);
+    constructor(nodeId){
+        super(nodeId);
         this.isUserTurn = false;
     }
 

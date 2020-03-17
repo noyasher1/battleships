@@ -8,14 +8,13 @@ import gameMovesListeners from './events/gameMovesEvents/gameMovesListeners.js';
 import disconnectionListeners from './events/disconnectionEvents/disconnectionListeners.js';
 
 
-const BOARD_LENGTH = 10;
 const userBoardId = "user-board";
 const opponentBoardId = "opponent-board";
 const startButton = document.getElementById("start-button");
 
 const messageBox = new MessageBox();
-const userBoard = new UserBoard(userBoardId, BOARD_LENGTH, BOARD_LENGTH);
-const opponentBoard = new OpponentBoard(opponentBoardId, BOARD_LENGTH, BOARD_LENGTH);
+const userBoard = new UserBoard(userBoardId);
+const opponentBoard = new OpponentBoard(opponentBoardId);
 
 function addGameListeners(socket, buttonToRemove){
     initializeBoardListeners(socket, messageBox, userBoard, opponentBoard, buttonToRemove);
