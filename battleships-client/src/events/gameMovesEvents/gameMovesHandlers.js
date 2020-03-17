@@ -1,5 +1,6 @@
 'use strict';
 import AlertModal from '../../components/alertModal.js'
+import { resetGame } from "../../staticMethods/sessionMethods.js";
 
 export default class GameMovesHandlers{
     static startGameHandler(userSocket, isStart, messageBox, userBoard, opponentBoard){
@@ -28,10 +29,11 @@ export default class GameMovesHandlers{
             if(data.isContainBattleship){
                 opponentBoard.markCellAsContainBattleship(rowIndex, columnIndex);
                 if(data.amIWinner){
-                    new AlertModal("You are the winner", () => {
-                        window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
-                        window.location.reload();
-                    });
+                    new AlertModal("You are the winner", () => resetGame(beforeunloadFuncToAbort));
+                    // new AlertModal("You are the winner", () => {
+                    //     window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
+                    //     window.location.reload();
+                    // });
                 }
             }
             else{
@@ -49,10 +51,11 @@ export default class GameMovesHandlers{
         if(data.isContainBattleship){
             userBoard.markCellAsContainBattleship(rowIndex, columnIndex);
             if(data.isOpponentWon){
-                new AlertModal("You are a looser", () => {
-                    window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
-                    window.location.reload();
-                });
+                new AlertModal("You are a looser", () => resetGame(beforeunloadFuncToAbort));
+                // new AlertModal("You are a looser", () => {
+                //     window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
+                //     window.location.reload();
+                // });
             }
         }
         else{

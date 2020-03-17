@@ -6,6 +6,7 @@ import OpponentBoard from './models/board/opponentBoard.js';
 import initializeBoardListeners from './events/initializeBoardEvents/initializeBoardListeners.js';
 import gameMovesListeners from './events/gameMovesEvents/gameMovesListeners.js';
 import disconnectionListeners from './events/disconnectionEvents/disconnectionListeners.js';
+import { alertBeforeUnload } from './staticMethods/sessionMethods.js'
 
 
 const userBoardId = "user-board";
@@ -17,14 +18,20 @@ const userBoard = new UserBoard(userBoardId);
 const opponentBoard = new OpponentBoard(opponentBoardId);
 
 function addGameListeners(socket, buttonToRemove){
+    console.log(alertBeforeUnload);
     initializeBoardListeners(socket, messageBox, userBoard, opponentBoard, buttonToRemove);
-    gameMovesListeners(socket, messageBox, userBoard, opponentBoard, beforeunloadFunc);
-    disconnectionListeners(socket, beforeunloadFunc);
+    gameMovesListeners(socket, messageBox, userBoard, opponentBoard, alertBeforeUnload);
+    disconnectionListeners(socket, alertBeforeUnload);
 }
 
-function beforeunloadFunc(event){
+/*function beforeunloadFunc(event){
     event.returnValue = ''; // When changing this value to value other then null or undefined, it prompt the message (in old browsers it prompt tje string set to the property)
-}
+}*/
+
+/*function abortBeforeunoladFunc(beforeunloadFuncToAbort){
+    window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
+    window.location.reload();
+}*/
 
 messageBox.pushMessage("Please click on \"Find me an opponent\" button to start");
 
@@ -33,7 +40,8 @@ startButton.onclick = () => {
     if(isStartButtonClicked){
         return;
     }
-    window.addEventListener("beforeunload", beforeunloadFunc);
+    // window.addEventListener("beforeunload", beforeunloadFunc);
+    window.addEventListener("beforeunload", alertBeforeUnload);
     isStartButtonClicked = true;
     startButton.disabled = true;
     messageBox.popMessage();
