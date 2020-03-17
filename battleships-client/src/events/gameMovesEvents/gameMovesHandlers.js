@@ -5,7 +5,7 @@ export default class GameMovesHandlers{
     static startGameHandler(userSocket, isStart, messageBox, userBoard, opponentBoard){
         messageBox.clear();
         opponentBoard.render();
-        opponentBoard.addCellsClickListener(userSocket, messageBox);
+        opponentBoard.addCellsClickListener(userSocket);
         userBoard.prepareForGameStart();
         messageBox.pushMessage("In your turn, click on a cell you want to expose.\n"
             + "The winner is the first user that will expose all the opponent\'s battleships.");

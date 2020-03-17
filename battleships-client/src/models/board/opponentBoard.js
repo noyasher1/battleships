@@ -9,7 +9,7 @@ export default class OpponentBoard extends BoardBase{
         this.isUserTurn = false;
     }
 
-    addCellsClickListener(userSocket, messageBox){
+    addCellsClickListener(userSocket){
         for (let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++) {
             for (let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++) {
                 this.cells[rowIndex][columnIndex].element.addEventListener("click", () => {
