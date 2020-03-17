@@ -1,4 +1,5 @@
 'use strict';
+import CONFIG from './config.js';
 import MessageBox from './models/messageBox.js';
 import UserBoard from './models/board/userBoard.js';
 import OpponentBoard from './models/board/opponentBoard.js';
@@ -38,7 +39,7 @@ startButton.onclick = () => {
     startButton.disabled = true;
     messageBox.popMessage();
     messageBox.pushMessage("Looking for an opponent. Please wait.");
-    const socket = io.connect("localhost:3000");
+    const socket = io.connect(`${CONFIG.serverHost}:${CONFIG.serverPort}`);
     addGameListeners(socket, startButton);
 };
 
