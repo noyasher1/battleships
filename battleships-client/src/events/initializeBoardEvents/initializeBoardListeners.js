@@ -5,7 +5,6 @@ import InitializeBoardHandlers from './initializeBoardHandlers.js';
 let battleshipLocator;
 export default (socket, messageBox, userBoard, opponentBoard, buttonToRemove) => {
     socket.on("AskForStartLocating", (data) => {
-        console.log(data.rowsNumber);
         userBoard.rowsNumber = data.rowsNumber;
         opponentBoard.rowsNumber = data.rowsNumber;
         userBoard.columnsNumber = data.columnsNumber;
