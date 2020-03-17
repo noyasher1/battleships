@@ -72,7 +72,8 @@ module.exports = class Sessions{
             return undefined;
         }
         for(let session of this.sessions){
-            if(session.user1.socket === socket || session.user2.socket === socket){
+            if(session.user1 && session.user1.socket === socket
+                || session.user2 && session.user2.socket === socket){
                 return session;
             }
         }
