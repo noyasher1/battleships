@@ -43,32 +43,12 @@ export default class UserBoard extends BoardBase{
         }
     }
 
-    createHTMLRow(){
-        let htmlRow = `<tr>`;
-        for(let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++){
-            htmlRow += '\n\t<td class="not-set"></td>';
-        }
-        htmlRow += '\n</tr>';
-
-        return htmlRow;
-    }
-
-    createHTMLTable(){
-        let htmlTable = `<table>`;
-        for(let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++){
-            htmlTable += `\n\t${this.createHTMLRow()}`;
-        }
-        htmlTable += '\n</table>';
-
-        return htmlTable;
-    }
-
     render(){
         let userBoardElement = document.createElement("div");
         userBoardElement.id = "user-board";
         userBoardElement.tabIndex = 0;
 
-        userBoardElement.innerHTML = `Your Board\r${this.createHTMLTable()}`;
+        userBoardElement.innerHTML = `Your Board\r${this.createHTMLTable("not-set")}`;
 
         let parentDiv = document.getElementById("game-boards");
         parentDiv.insertBefore(userBoardElement, parentDiv.childNodes[0] || null);

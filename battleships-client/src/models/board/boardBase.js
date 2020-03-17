@@ -41,4 +41,24 @@ export default class boardBase{
     markCellAsContainBattleship(rowIndex, columnIndex){
         this.cells[rowIndex][columnIndex].markAsContainBattleship()
     }
+
+    createHTMLRow(...classNames){
+        let htmlRow = `<tr>`;
+        for(let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++){
+            htmlRow += `\n\t<td class="${classNames.join(" ")}"></td>`;
+        }
+        htmlRow += '\n</tr>';
+
+        return htmlRow;
+    }
+
+    createHTMLTable(...cellClassNames){
+        let htmlTable = `<table>`;
+        for(let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++){
+            htmlTable += `\n\t${this.createHTMLRow(cellClassNames)}`;
+        }
+        htmlTable += '\n</table>';
+
+        return htmlTable;
+    }
 }
