@@ -32,10 +32,6 @@ export default class GameMovesHandlers{
                         window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
                         window.location.reload();
                     });
-                    /*if(!alert("You are the winner")){
-                        window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
-                        window.location.reload();
-                    }*/
                 }
             }
             else{
@@ -57,10 +53,6 @@ export default class GameMovesHandlers{
                     window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
                     window.location.reload();
                 });
-                /*if(!alert("You are a looser")){
-                    window.removeEventListener("beforeunload", beforeunloadFuncToAbort);
-                    window.location.reload();
-                }*/
             }
         }
         else{
