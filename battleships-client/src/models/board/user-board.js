@@ -7,7 +7,7 @@ export default class UserBoard extends BoardBase{
         this._lastExposedCell = null;
     }
 
-    prepareForUserTurn(messageBox, popFirstMessage = true){
+    static prepareForUserTurn(messageBox, popFirstMessage = true){
         if(popFirstMessage){
             messageBox.popMessage();
         }

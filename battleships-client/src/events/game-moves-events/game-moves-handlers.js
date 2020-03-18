@@ -1,6 +1,7 @@
 'use strict';
 import AlertModal from '../../components/alert-modal.js'
 import { resetGame } from "../../static-methods/session-methods.js";
+import UserBoard from "../../models/board/user-board.js";
 
 export default class GameMovesHandlers{
     static startGameHandler(userSocket, isStart, messageBox, userBoard, opponentBoard){
@@ -12,7 +13,7 @@ export default class GameMovesHandlers{
             + "The winner is the first user that will expose all the opponent\'s battleships.");
         if(isStart){
             opponentBoard.prepareForUserTurn();
-            userBoard.prepareForUserTurn(messageBox, false);
+            UserBoard.prepareForUserTurn(messageBox, false);
         }
         else{
             userBoard.prepareForOpponentTurn();
@@ -52,7 +53,7 @@ export default class GameMovesHandlers{
         }
         else{
             opponentBoard.prepareForUserTurn();
-            userBoard.prepareForUserTurn(messageBox)
+            UserBoard.prepareForUserTurn(messageBox)
         }
     }
 }
