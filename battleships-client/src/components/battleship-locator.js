@@ -23,7 +23,7 @@ export default class BattleshipLocator{
         this.isHorizontal = true;
         this.startRowIndex = 0;
         this.startColumnIndex = 0;
-        this.addButtons();
+        this._addButtons();
         this.moveRightButton = document.getElementById(moveRightButtonId);
         this.moveLeftButton = document.getElementById(moveLeftButtonId);
         this.moveUpButton = document.getElementById(moveUpButtonId);
@@ -32,33 +32,33 @@ export default class BattleshipLocator{
         this.rotateLeftButton = document.getElementById(rotateLeftButtonId);
         this.resetBattleshipStateButton = document.getElementById(resetBattleshipStateButtonId);
         this.placeTheBattleshipButton = document.getElementById(placeTheBattleshipButtonId);
-        this.addButtonsListeners();
-        this.addKeysListeners();
-        this.shouldDisableAllButtons(true);
-        this.initMessageBox();
+        this._addButtonsListeners();
+        this._addKeysListeners();
+        this._shouldDisableAllButtons(true);
+        this._initMessageBox();
     }
 
     startLocating(length){
         this.isActive = true;
         this.length = length;
         this.isHorizontal = true;
-        this.initLocation();
-        this.renderBattleship();
-        this.shouldDisableAllButtons(false);
-        this.valuateButtons();
+        this._initLocation();
+        this._renderBattleship();
+        this._shouldDisableAllButtons(false);
+        this._valuateButtons();
         this.messageBox.pushMessage(`Please place a battleship with a length of ${this.length} cells.`)
     }
 
     finishLocating(){
         this.isActive = false;
         this.length = null;
-        this.initLocation();
-        this.renderBattleship();
-        this.shouldDisableAllButtons(true);
+        this._initLocation();
+        this._renderBattleship();
+        this._shouldDisableAllButtons(true);
         this.messageBox.popMessage()
     }
 
-    initMessageBox(){
+    _initMessageBox(){
         this.messageBox.pushMessage("Please start locate your battleships.\n"
             + "You can place your battleship only vertically or horizontally, Not diagonally.\n"
             + "You must have a space of at least one cell between one battleship to another.\n"
@@ -66,7 +66,7 @@ export default class BattleshipLocator{
             + "In keyboard use arrow keys to move, and space to determine the location.")
     }
 
-    addButtons(){
+    _addButtons(){
         let boardToLocateElementOn = this.boardToLocateOnElement.element;
         let buttonsDiv = document.createElement("div");
         buttonsDiv.id = buttonsDivId;
@@ -84,30 +84,30 @@ export default class BattleshipLocator{
         boardToLocateElementOn.appendChild(buttonsDiv);
     }
 
-    removeButtons(){
+    _removeButtons(){
         let buttonsDiv = document.getElementById(buttonsDivId);
         this.boardToLocateOnElement.element.removeChild(buttonsDiv);
     }
 
-    resetMessagesFromLocator(){
+    _resetMessagesFromLocator(){
         this.messageBox.clear();
     }
 
     allBattleshipsAreLocated(){
-        this.removeButtons();
-        this.resetMessagesFromLocator();
+        this._removeButtons();
+        this._resetMessagesFromLocator();
     }
 
-    initLocation(){
+    _initLocation(){
         this.startRowIndex = 0;
         this.startColumnIndex = 0;
     }
 
-    initCellsConsideredToLocateBattleship(){
+     static _initCellsConsideredToLocateBattleship(){
         document.querySelectorAll(".considered-to-contain-battleship").forEach(cell => cell.classList.remove("considered-to-contain-battleship"))
     }
 
-    shouldDisableAllButtons(shouldDisable){
+    _shouldDisableAllButtons(shouldDisable){
         this.moveRightButton.disabled = shouldDisable;
         this.moveLeftButton.disabled = shouldDisable;
         this.moveUpButton.disabled = shouldDisable;
@@ -118,38 +118,38 @@ export default class BattleshipLocator{
         this.placeTheBattleshipButton.disabled = shouldDisable;
     }
 
-    disableButtonIfNecessary(buttonElement, isPossibleFunction){
+    _disableButtonIfNecessary(buttonElement, isPossibleFunction){
         buttonElement.disabled = !isPossibleFunction.call(this);
     }
 
-    addButtonsListeners() {
+    _addButtonsListeners() {
         this.moveRightButton.onclick = () => {
-            this.handleMoveRight();
+            this._handleMoveRight();
         };
         this.moveLeftButton.onclick = () => {
-            this.handleMoveLeft();
+            this._handleMoveLeft();
         };
         this.moveUpButton.onclick = () => {
-            this.handleMoveUp();
+            this._handleMoveUp();
         };
         this.moveDownButton.onclick = () => {
-            this.handleMoveDown();
+            this._handleMoveDown();
         };
         let rotateButtons = document.getElementsByClassName("rotateButton");
         Array.from(rotateButtons).forEach((rotateButton) => {
             rotateButton.onclick = () => {
-                this.handleRotate();
+                this._handleRotate();
             }
         });
         this.resetBattleshipStateButton.onclick = () => {
-            this.handleResetBattleshipState();
+            this._handleResetBattleshipState();
         };
         this.placeTheBattleshipButton.onclick = () => {
-            this.handlePlaceTheBattleship();
+            this._handlePlaceTheBattleship();
         };
     }
 
-    addKeysListeners(){
+    _addKeysListeners(){
         this.boardToLocateOnElement.element.addEventListener("keydown", (event) => {
             let pressedKey = event.key;
             if (pressedKey === "ArrowUp"
@@ -159,25 +159,25 @@ export default class BattleshipLocator{
                 || pressedKey === " ") {
                 event.preventDefault();
                 if(pressedKey === "ArrowUp"){
-                    this.handleMoveUp();
+                    this._handleMoveUp();
                 }
                 else if(pressedKey === "ArrowDown"){
-                    this.handleMoveDown();
+                    this._handleMoveDown();
                 }
                 else if(pressedKey === "ArrowRight"){
-                    this.handleMoveRight();
+                    this._handleMoveRight();
                 }
                 else if(pressedKey === "ArrowLeft"){
-                    this.handleMoveLeft();
+                    this._handleMoveLeft();
                 }
                 else if(pressedKey === " "){
-                    this.handlePlaceTheBattleship();
+                    this._handlePlaceTheBattleship();
                 }
             }
         })
     }
 
-    validateMovingRightPossibility(){
+    _validateMovingRightPossibility(){
         if(this.isHorizontal){
             if(this.startColumnIndex + this.length < this.boardWidthCellsNumber){
                 return true;
@@ -191,15 +191,15 @@ export default class BattleshipLocator{
         return false;
     }
 
-    validateMovingLeftPossibility(){
+    _validateMovingLeftPossibility(){
         return this.startColumnIndex - 1 >= 0;
     }
 
-    validateMovingUpPossibility(){
+    _validateMovingUpPossibility(){
         return this.startRowIndex - 1 >= 0;
     }
 
-    validateMovingDownPossibility(){
+    _validateMovingDownPossibility(){
         if(this.isHorizontal){
             if(this.startRowIndex + 1 < this.boardHeightCellsNumber){
                 return true;
@@ -213,93 +213,93 @@ export default class BattleshipLocator{
         return false;
     }
 
-    valuateButtons(){
+    _valuateButtons(){
         if(!this.isActive){
             return;
         }
-        this.disableButtonIfNecessary(this.moveRightButton, this.validateMovingRightPossibility);
-        this.disableButtonIfNecessary(this.moveLeftButton, this.validateMovingLeftPossibility);
-        this.disableButtonIfNecessary(this.moveUpButton, this.validateMovingUpPossibility);
-        this.disableButtonIfNecessary(this.moveDownButton, this.validateMovingDownPossibility);
+        this._disableButtonIfNecessary(this.moveRightButton, this._validateMovingRightPossibility);
+        this._disableButtonIfNecessary(this.moveLeftButton, this._validateMovingLeftPossibility);
+        this._disableButtonIfNecessary(this.moveUpButton, this._validateMovingUpPossibility);
+        this._disableButtonIfNecessary(this.moveDownButton, this._validateMovingDownPossibility);
     }
 
-    handleMoveRight(){
+    _handleMoveRight(){
         if(!this.isActive){
             return;
         }
-        if(this.validateMovingRightPossibility()){
+        if(this._validateMovingRightPossibility()){
             this.startColumnIndex += 1;
-            this.renderBattleship();
-            this.valuateButtons();
+            this._renderBattleship();
+            this._valuateButtons();
         }
-        this.disableButtonIfNecessary(this.moveRightButton, this.validateMovingRightPossibility);
+        this._disableButtonIfNecessary(this.moveRightButton, this._validateMovingRightPossibility);
     }
 
-    handleMoveLeft(){
+    _handleMoveLeft(){
         if(!this.isActive){
             return;
         }
-        if(this.validateMovingLeftPossibility()) {
+        if(this._validateMovingLeftPossibility()) {
             this.startColumnIndex -= 1;
-            this.renderBattleship();
-            this.valuateButtons();
+            this._renderBattleship();
+            this._valuateButtons();
         }
-        this.disableButtonIfNecessary(this.moveLeftButton, this.validateMovingLeftPossibility);
+        this._disableButtonIfNecessary(this.moveLeftButton, this._validateMovingLeftPossibility);
     }
 
-    handleMoveUp(){
+    _handleMoveUp(){
         if(!this.isActive){
             return;
         }
-        if(this.validateMovingUpPossibility()){
+        if(this._validateMovingUpPossibility()){
             this.startRowIndex -= 1;
-            this.renderBattleship();
-            this.valuateButtons();
+            this._renderBattleship();
+            this._valuateButtons();
         }
-        this.disableButtonIfNecessary(this.moveUpButton, this.validateMovingUpPossibility);
+        this._disableButtonIfNecessary(this.moveUpButton, this._validateMovingUpPossibility);
     }
 
-    handleMoveDown(){
+    _handleMoveDown(){
         if(!this.isActive){
             return;
         }
-        if(this.validateMovingDownPossibility()){
+        if(this._validateMovingDownPossibility()){
             this.startRowIndex += 1;
-            this.renderBattleship();
-            this.valuateButtons();
+            this._renderBattleship();
+            this._valuateButtons();
         }
-        this.disableButtonIfNecessary(this.moveDownButton, this.validateMovingDownPossibility);
+        this._disableButtonIfNecessary(this.moveDownButton, this._validateMovingDownPossibility);
     }
 
-    handleRotate(){
+    _handleRotate(){
         if(!this.isActive){
             return;
         }
         this.isHorizontal = !this.isHorizontal;
-        this.initLocation();
-        this.renderBattleship();
-        this.valuateButtons();
+        this._initLocation();
+        this._renderBattleship();
+        this._valuateButtons();
     }
 
-    handleResetBattleshipState(){
+    _handleResetBattleshipState(){
         if(!this.isActive){
             return;
         }
         this.isHorizontal = true;
-        this.initLocation();
-        this.renderBattleship();
-        this.valuateButtons();
+        this._initLocation();
+        this._renderBattleship();
+        this._valuateButtons();
     }
 
-    handlePlaceTheBattleship(){
+    _handlePlaceTheBattleship(){
         if(!this.isActive){
             return;
         }
         InitializeBoardEmitters.locateABattleship(this.server, this.startRowIndex, this.startColumnIndex, this.length, this.isHorizontal);
     }
 
-    renderBattleship(){
-        this.initCellsConsideredToLocateBattleship();
+    _renderBattleship(){
+        BattleshipLocator._initCellsConsideredToLocateBattleship();
         if(!this.isActive){
             return;
         }
