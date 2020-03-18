@@ -4,7 +4,7 @@ const contentItemClass = "modal-content-item";
 export default class AlertModal{
     constructor(message, funcOnClick){
         AlertModal._createHTML(message);
-        AlertModal.addButtonListener(funcOnClick);
+        AlertModal._addButtonListener(funcOnClick);
     }
 
     static _createHTML(message){
@@ -31,7 +31,7 @@ export default class AlertModal{
         return modalDiv;
     }
 
-    static addButtonListener(funcOnClick){
+    static _addButtonListener(funcOnClick){
         document.getElementById(okButtonId).addEventListener("click", funcOnClick);
     }
 }

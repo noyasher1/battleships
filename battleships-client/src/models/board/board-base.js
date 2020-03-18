@@ -7,7 +7,7 @@ export default class boardBase{
         this.rowsNumber = 10;
         this.columnsNumber = 10;
         this.cells = [];
-        this.element;
+        this.element = null;
     }
 
     mapBoard(){

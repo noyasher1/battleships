@@ -38,6 +38,10 @@ export default class BattleshipLocator{
         this._initMessageBox();
     }
 
+    static _initCellsConsideredToLocateBattleship(){
+        document.querySelectorAll(".considered-to-contain-battleship").forEach(cell => cell.classList.remove("considered-to-contain-battleship"))
+    }
+
     startLocating(length){
         this.isActive = true;
         this.length = length;
@@ -56,6 +60,11 @@ export default class BattleshipLocator{
         this._renderBattleship();
         this._shouldDisableAllButtons(true);
         this.messageBox.popMessage()
+    }
+
+    allBattleshipsAreLocated(){
+        this._removeButtons();
+        this._resetMessagesFromLocator();
     }
 
     _initMessageBox(){
@@ -93,18 +102,9 @@ export default class BattleshipLocator{
         this.messageBox.clear();
     }
 
-    allBattleshipsAreLocated(){
-        this._removeButtons();
-        this._resetMessagesFromLocator();
-    }
-
     _initLocation(){
         this.startRowIndex = 0;
         this.startColumnIndex = 0;
-    }
-
-     static _initCellsConsideredToLocateBattleship(){
-        document.querySelectorAll(".considered-to-contain-battleship").forEach(cell => cell.classList.remove("considered-to-contain-battleship"))
     }
 
     _shouldDisableAllButtons(shouldDisable){
