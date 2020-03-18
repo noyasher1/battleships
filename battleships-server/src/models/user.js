@@ -5,7 +5,7 @@ module.exports = class User{
     constructor(socket){
         this.socket = socket;
         this.board = new Board();
-        this.battleshipsToLocate = [
+        this._battleshipsToLocate = [
             {
                 length: 5,
                 isLocated: false
@@ -34,7 +34,7 @@ module.exports = class User{
     }
 
     nextBattleship(){
-        for(let battleshipToLocate of this.battleshipsToLocate){
+        for(let battleshipToLocate of this._battleshipsToLocate){
             if (!battleshipToLocate.isLocated){
                 return battleshipToLocate;
             }
