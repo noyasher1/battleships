@@ -10,7 +10,6 @@ export default class MessageBox{
     }
 
     pushMessage(message){
-
         let messageNode = document.createTextNode(message += '\n');
         this.element.append(messageNode);
     }
