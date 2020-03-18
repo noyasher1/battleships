@@ -1,6 +1,6 @@
 'use strict';
 //const sessions = require("../../states/sessions").sessionsManager;
-const GameMovesHandlers = require("./GameMovesHandlers");
+const GameMovesHandlers = require("./game-moves-handlers");
 
 module.exports = (sessions, socket, session, user) => {
     socket.on("UserMove", (data) => {

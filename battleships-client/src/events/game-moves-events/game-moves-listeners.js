@@ -1,5 +1,5 @@
 'use strict';
-import GameMovesHandlers from './gameMovesHandlers.js'
+import GameMovesHandlers from './game-moves-handlers.js'
 
 export default (socket, messageBox, userBoard, opponentBoard) => {
     socket.on("StartGame", (data) => {

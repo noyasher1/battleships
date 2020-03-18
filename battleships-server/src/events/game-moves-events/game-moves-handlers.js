@@ -1,5 +1,5 @@
 'use strict';
-const GameMovesEmitters = require("./gameMovesEmitters.js");
+const GameMovesEmitters = require("./game-moves-emitters.js");
 
 module.exports = class GameMovesHandlers{
     static userMove(sessions, session, user, rowIndex, columnIndex){

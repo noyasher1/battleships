@@ -2,9 +2,9 @@
 const CONFIG = require("./config");
 const http = require("http");
 const IoServer = require("socket.io");
-const initializeBoardsListeners = require("./src/events/initializeBoardsEvents/initializeBoardsListeners");
-const gameMovesListeners = require("./src/events/gameMovesEvents/gameMovesListeners");
-const disconnectionListeners = require("./src/events/disconnectionEvents/disconnectionListeners");
+const initializeBoardsListeners = require("./src/events/initialize-boards-events/initialize-boards-listeners");
+const gameMovesListeners = require("./src/events/game-moves-events/game-moves-listeners");
+const disconnectionListeners = require("./src/events/disconnection-events/disconnection-listeners");
 const sessions = require("./src/states/sessions.js").sessionsManager;
 
 const port = process.env.PORT || CONFIG.port;

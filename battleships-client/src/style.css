@@ -46,14 +46,14 @@ canvas {
     left: 6px;
     top: 6px;
     content: ' ';
-    background-image: url('icons/xIcon.svg');
+    background-image: url('icons/x-icon.svg');
     background-size: 30px 30px;
     height: 30px;
     width: 30px;
 }
 
 #user-board td.exposed.battleship-placed:after{
-    background-image: url('icons/sniperSightIcon.svg');
+    background-image: url('icons/sniper-sight-icon.svg');
 }
 
 #user-board td.exposed.last-exposed{

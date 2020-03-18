@@ -1,5 +1,5 @@
 "use strict";
-import InitializeBoardEmitters from "../events/initializeBoardEvents/initializeBoardEmitters.js"
+import InitializeBoardEmitters from "../events/initialize-board-events/initialize-board-emitters.js"
 
 const buttonsDivId = "controllingBattleshipLocation";
 const moveRightButtonId = "move-right";

@@ -1,12 +1,12 @@
 'use strict';
 import CONFIG from './config.js';
-import MessageBox from './models/messageBox.js';
-import UserBoard from './models/board/userBoard.js';
-import OpponentBoard from './models/board/opponentBoard.js';
-import initializeBoardListeners from './events/initializeBoardEvents/initializeBoardListeners.js';
-import gameMovesListeners from './events/gameMovesEvents/gameMovesListeners.js';
-import disconnectionListeners from './events/disconnectionEvents/disconnectionListeners.js';
-import { alertBeforeUnload } from './staticMethods/sessionMethods.js'
+import MessageBox from './models/message-box.js';
+import UserBoard from './models/board/user-board.js';
+import OpponentBoard from './models/board/opponent-board.js';
+import initializeBoardListeners from './events/initialize-board-events/initialize-board-listeners.js';
+import gameMovesListeners from './events/game-moves-events/game-moves-listeners.js';
+import disconnectionListeners from './events/disconnection-events/disconnection-listeners.js';
+import { alertBeforeUnload } from './static-methods/session-methods.js'
 
 
 const userBoardId = "user-board";

@@ -1,6 +1,6 @@
 'use strict';
-import BattleshipLocator from "../../components/battleshipLocator.js";
-import InitializeBoardHandlers from './initializeBoardHandlers.js';
+import BattleshipLocator from "../../components/battleship-locator.js";
+import InitializeBoardHandlers from './initialize-board-handlers.js';
 
 let battleshipLocator;
 export default (socket, messageBox, userBoard, opponentBoard, buttonToRemove) => {

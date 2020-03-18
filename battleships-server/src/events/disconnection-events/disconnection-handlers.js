@@ -1,5 +1,5 @@
 'use strict';
-const DisconnectionEmitters = require("./disconnectionEmitters.js");
+const DisconnectionEmitters = require("./disconnection-emitters.js");
 
 module.exports = class DisconnectionHandlers{
     static disconnect(sessions, user){

@@ -1,6 +1,6 @@
 'use strict';
-import AlertModal from '../../components/alertModal.js'
-import { resetGame } from "../../staticMethods/sessionMethods.js";
+import AlertModal from '../../components/alert-modal.js'
+import { resetGame } from "../../static-methods/session-methods.js";
 
 export default class GameMovesHandlers{
     static startGameHandler(userSocket, isStart, messageBox, userBoard, opponentBoard){

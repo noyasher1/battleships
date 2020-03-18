@@ -1,6 +1,6 @@
 'use strict';
-const InitializeBoardsHandlers = require("./initializeBoardsHandlers");
-const InitializeBoardsEmitters = require("./initializeBoardsEmitters");
+const InitializeBoardsHandlers = require("./initialize-boards-handlers");
+const InitializeBoardsEmitters = require("./initialize-boards-emitters");
 
 module.exports = (socket, session, user, isNewUser, rowsNumber, columnsNumber) => {
     if(isNewUser){

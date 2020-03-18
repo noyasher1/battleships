@@ -1,7 +1,7 @@
 'use strict';
-import BoardBase from './boardBase.js';
+import BoardBase from './board-base.js';
 import Cell from '../cell.js';
-import GameMovesEmitters from '../../events/gameMovesEvents/gameMovesEmitters.js';
+import GameMovesEmitters from '../../events/game-moves-events/game-moves-emitters.js';
 
 export default class OpponentBoard extends BoardBase{
     constructor(nodeId){

@@ -1,5 +1,5 @@
 'use strict';
-import BoardBase from './boardBase.js';
+import BoardBase from './board-base.js';
 import Cell from '../cell.js';
 
 export default class UserBoard extends BoardBase{

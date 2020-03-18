@@ -1,7 +1,7 @@
 'use strict';
-const LocatingEmitters = require("./initializeBoardsEmitters");
-const GameMovesEmitters = require("../gameMovesEvents/gameMovesEmitters.js");
-const LocatingStatus = require("../../consts/locatingStatus");
+const LocatingEmitters = require("./initialize-boards-emitters");
+const GameMovesEmitters = require("../game-moves-events/game-moves-emitters.js");
+const LocatingStatus = require("../../consts/locating-status");
 
 module.exports = class InitializeBoardsHandlers{
     static locateABattleshipHandler(session, user, event){
