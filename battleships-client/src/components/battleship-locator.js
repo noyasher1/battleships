@@ -12,26 +12,26 @@ const resetBattleshipStateButtonId = "reset-battleship-state";
 const placeTheBattleshipButtonId = "place-the-battleship";
 
 export default class BattleshipLocator{
-    constructor(server, boardToLocateOn, messageBox){
+    constructor(server, boardToLocateOn, _messageBox){
         this.server = server;
-        this.isActive = false;
-        this.boardToLocateOnElement = boardToLocateOn;
-        this.boardHeightCellsNumber = this.boardToLocateOnElement.columnsNumber;
-        this.boardWidthCellsNumber = this.boardToLocateOnElement.rowsNumber;
-        this.messageBox = messageBox;
-        this.length = null;
-        this.isHorizontal = true;
-        this.startRowIndex = 0;
-        this.startColumnIndex = 0;
+        this._isActive = false;
+        this._boardToLocateOnElement = boardToLocateOn;
+        this._boardHeightCellsNumber = this._boardToLocateOnElement.columnsNumber;
+        this._boardWidthCellsNumber = this._boardToLocateOnElement.rowsNumber;
+        this._messageBox = _messageBox;
+        this._length = null;
+        this._isHorizontal = true;
+        this._startRowIndex = 0;
+        this._startColumnIndex = 0;
         this._addButtons();
-        this.moveRightButton = document.getElementById(moveRightButtonId);
-        this.moveLeftButton = document.getElementById(moveLeftButtonId);
-        this.moveUpButton = document.getElementById(moveUpButtonId);
-        this.moveDownButton = document.getElementById(moveDownButtonId);
-        this.rotateRightButton = document.getElementById(rotateRightButtonId);
-        this.rotateLeftButton = document.getElementById(rotateLeftButtonId);
-        this.resetBattleshipStateButton = document.getElementById(resetBattleshipStateButtonId);
-        this.placeTheBattleshipButton = document.getElementById(placeTheBattleshipButtonId);
+        this._moveRightButton = document.getElementById(moveRightButtonId);
+        this._moveLeftButton = document.getElementById(moveLeftButtonId);
+        this._moveUpButton = document.getElementById(moveUpButtonId);
+        this._moveDownButton = document.getElementById(moveDownButtonId);
+        this._rotateRightButton = document.getElementById(rotateRightButtonId);
+        this._rotateLeftButton = document.getElementById(rotateLeftButtonId);
+        this._resetBattleshipStateButton = document.getElementById(resetBattleshipStateButtonId);
+        this._placeTheBattleshipButton = document.getElementById(placeTheBattleshipButtonId);
         this._addButtonsListeners();
         this._addKeysListeners();
         this._shouldDisableAllButtons(true);
@@ -43,23 +43,23 @@ export default class BattleshipLocator{
     }
 
     startLocating(length){
-        this.isActive = true;
-        this.length = length;
-        this.isHorizontal = true;
+        this._isActive = true;
+        this._length = length;
+        this._isHorizontal = true;
         this._initLocation();
         this._renderBattleship();
         this._shouldDisableAllButtons(false);
         this._valuateButtons();
-        this.messageBox.pushMessage(`Please place a battleship with a length of ${this.length} cells.`)
+        this._messageBox.pushMessage(`Please place a battleship with a length of ${this._length} cells.`)
     }
 
     finishLocating(){
-        this.isActive = false;
-        this.length = null;
+        this._isActive = false;
+        this._length = null;
         this._initLocation();
         this._renderBattleship();
         this._shouldDisableAllButtons(true);
-        this.messageBox.popMessage()
+        this._messageBox.popMessage()
     }
 
     allBattleshipsAreLocated(){
@@ -68,7 +68,7 @@ export default class BattleshipLocator{
     }
 
     _initMessageBox(){
-        this.messageBox.pushMessage("Please start locate your battleships.\n"
+        this._messageBox.pushMessage("Please start locate your battleships.\n"
             + "You can place your battleship only vertically or horizontally, Not diagonally.\n"
             + "You must have a space of at least one cell between one battleship to another.\n"
             + "You can use the buttons below the board or keyboard.\n"
@@ -76,7 +76,7 @@ export default class BattleshipLocator{
     }
 
     _addButtons(){
-        let boardToLocateElementOn = this.boardToLocateOnElement.element;
+        let boardToLocateElementOn = this._boardToLocateOnElement.element;
         let buttonsDiv = document.createElement("div");
         buttonsDiv.id = buttonsDivId;
         buttonsDiv.innerHTML = `
@@ -95,27 +95,27 @@ export default class BattleshipLocator{
 
     _removeButtons(){
         let buttonsDiv = document.getElementById(buttonsDivId);
-        this.boardToLocateOnElement.element.removeChild(buttonsDiv);
+        this._boardToLocateOnElement.element.removeChild(buttonsDiv);
     }
 
     _resetMessagesFromLocator(){
-        this.messageBox.clear();
+        this._messageBox.clear();
     }
 
     _initLocation(){
-        this.startRowIndex = 0;
-        this.startColumnIndex = 0;
+        this._startRowIndex = 0;
+        this._startColumnIndex = 0;
     }
 
     _shouldDisableAllButtons(shouldDisable){
-        this.moveRightButton.disabled = shouldDisable;
-        this.moveLeftButton.disabled = shouldDisable;
-        this.moveUpButton.disabled = shouldDisable;
-        this.moveDownButton.disabled = shouldDisable;
-        this.rotateRightButton.disabled = shouldDisable;
-        this.rotateLeftButton.disabled = shouldDisable;
-        this.resetBattleshipStateButton.disabled = shouldDisable;
-        this.placeTheBattleshipButton.disabled = shouldDisable;
+        this._moveRightButton.disabled = shouldDisable;
+        this._moveLeftButton.disabled = shouldDisable;
+        this._moveUpButton.disabled = shouldDisable;
+        this._moveDownButton.disabled = shouldDisable;
+        this._rotateRightButton.disabled = shouldDisable;
+        this._rotateLeftButton.disabled = shouldDisable;
+        this._resetBattleshipStateButton.disabled = shouldDisable;
+        this._placeTheBattleshipButton.disabled = shouldDisable;
     }
 
     _disableButtonIfNecessary(buttonElement, isPossibleFunction){
@@ -123,16 +123,16 @@ export default class BattleshipLocator{
     }
 
     _addButtonsListeners() {
-        this.moveRightButton.onclick = () => {
+        this._moveRightButton.onclick = () => {
             this._handleMoveRight();
         };
-        this.moveLeftButton.onclick = () => {
+        this._moveLeftButton.onclick = () => {
             this._handleMoveLeft();
         };
-        this.moveUpButton.onclick = () => {
+        this._moveUpButton.onclick = () => {
             this._handleMoveUp();
         };
-        this.moveDownButton.onclick = () => {
+        this._moveDownButton.onclick = () => {
             this._handleMoveDown();
         };
         let rotateButtons = document.getElementsByClassName("rotateButton");
@@ -141,16 +141,16 @@ export default class BattleshipLocator{
                 this._handleRotate();
             }
         });
-        this.resetBattleshipStateButton.onclick = () => {
+        this._resetBattleshipStateButton.onclick = () => {
             this._handleResetBattleshipState();
         };
-        this.placeTheBattleshipButton.onclick = () => {
+        this._placeTheBattleshipButton.onclick = () => {
             this._handlePlaceTheBattleship();
         };
     }
 
     _addKeysListeners(){
-        this.boardToLocateOnElement.element.addEventListener("keydown", (event) => {
+        this._boardToLocateOnElement.element.addEventListener("keydown", (event) => {
             let pressedKey = event.key;
             if (pressedKey === "ArrowUp"
                 || pressedKey === "ArrowDown"
@@ -178,13 +178,13 @@ export default class BattleshipLocator{
     }
 
     _validateMovingRightPossibility(){
-        if(this.isHorizontal){
-            if(this.startColumnIndex + this.length < this.boardWidthCellsNumber){
+        if(this._isHorizontal){
+            if(this._startColumnIndex + this._length < this._boardWidthCellsNumber){
                 return true;
             }
         }
         else{
-            if(this.startColumnIndex + 1 < this.boardWidthCellsNumber){
+            if(this._startColumnIndex + 1 < this._boardWidthCellsNumber){
                 return true;
             }
         }
@@ -192,21 +192,21 @@ export default class BattleshipLocator{
     }
 
     _validateMovingLeftPossibility(){
-        return this.startColumnIndex - 1 >= 0;
+        return this._startColumnIndex - 1 >= 0;
     }
 
     _validateMovingUpPossibility(){
-        return this.startRowIndex - 1 >= 0;
+        return this._startRowIndex - 1 >= 0;
     }
 
     _validateMovingDownPossibility(){
-        if(this.isHorizontal){
-            if(this.startRowIndex + 1 < this.boardHeightCellsNumber){
+        if(this._isHorizontal){
+            if(this._startRowIndex + 1 < this._boardHeightCellsNumber){
                 return true;
             }
         }
         else {
-            if(this.startRowIndex + this.length < this.boardHeightCellsNumber){
+            if(this._startRowIndex + this._length < this._boardHeightCellsNumber){
                 return true;
             }
         }
@@ -214,103 +214,103 @@ export default class BattleshipLocator{
     }
 
     _valuateButtons(){
-        if(!this.isActive){
+        if(!this._isActive){
             return;
         }
-        this._disableButtonIfNecessary(this.moveRightButton, this._validateMovingRightPossibility);
-        this._disableButtonIfNecessary(this.moveLeftButton, this._validateMovingLeftPossibility);
-        this._disableButtonIfNecessary(this.moveUpButton, this._validateMovingUpPossibility);
-        this._disableButtonIfNecessary(this.moveDownButton, this._validateMovingDownPossibility);
+        this._disableButtonIfNecessary(this._moveRightButton, this._validateMovingRightPossibility);
+        this._disableButtonIfNecessary(this._moveLeftButton, this._validateMovingLeftPossibility);
+        this._disableButtonIfNecessary(this._moveUpButton, this._validateMovingUpPossibility);
+        this._disableButtonIfNecessary(this._moveDownButton, this._validateMovingDownPossibility);
     }
 
     _handleMoveRight(){
-        if(!this.isActive){
+        if(!this._isActive){
             return;
         }
         if(this._validateMovingRightPossibility()){
-            this.startColumnIndex += 1;
+            this._startColumnIndex += 1;
             this._renderBattleship();
             this._valuateButtons();
         }
-        this._disableButtonIfNecessary(this.moveRightButton, this._validateMovingRightPossibility);
+        this._disableButtonIfNecessary(this._moveRightButton, this._validateMovingRightPossibility);
     }
 
     _handleMoveLeft(){
-        if(!this.isActive){
+        if(!this._isActive){
             return;
         }
         if(this._validateMovingLeftPossibility()) {
-            this.startColumnIndex -= 1;
+            this._startColumnIndex -= 1;
             this._renderBattleship();
             this._valuateButtons();
         }
-        this._disableButtonIfNecessary(this.moveLeftButton, this._validateMovingLeftPossibility);
+        this._disableButtonIfNecessary(this._moveLeftButton, this._validateMovingLeftPossibility);
     }
 
     _handleMoveUp(){
-        if(!this.isActive){
+        if(!this._isActive){
             return;
         }
         if(this._validateMovingUpPossibility()){
-            this.startRowIndex -= 1;
+            this._startRowIndex -= 1;
             this._renderBattleship();
             this._valuateButtons();
         }
-        this._disableButtonIfNecessary(this.moveUpButton, this._validateMovingUpPossibility);
+        this._disableButtonIfNecessary(this._moveUpButton, this._validateMovingUpPossibility);
     }
 
     _handleMoveDown(){
-        if(!this.isActive){
+        if(!this._isActive){
             return;
         }
         if(this._validateMovingDownPossibility()){
-            this.startRowIndex += 1;
+            this._startRowIndex += 1;
             this._renderBattleship();
             this._valuateButtons();
         }
-        this._disableButtonIfNecessary(this.moveDownButton, this._validateMovingDownPossibility);
+        this._disableButtonIfNecessary(this._moveDownButton, this._validateMovingDownPossibility);
     }
 
     _handleRotate(){
-        if(!this.isActive){
+        if(!this._isActive){
             return;
         }
-        this.isHorizontal = !this.isHorizontal;
+        this._isHorizontal = !this._isHorizontal;
         this._initLocation();
         this._renderBattleship();
         this._valuateButtons();
     }
 
     _handleResetBattleshipState(){
-        if(!this.isActive){
+        if(!this._isActive){
             return;
         }
-        this.isHorizontal = true;
+        this._isHorizontal = true;
         this._initLocation();
         this._renderBattleship();
         this._valuateButtons();
     }
 
     _handlePlaceTheBattleship(){
-        if(!this.isActive){
+        if(!this._isActive){
             return;
         }
-        InitializeBoardEmitters.locateABattleship(this.server, this.startRowIndex, this.startColumnIndex, this.length, this.isHorizontal);
+        InitializeBoardEmitters.locateABattleship(this.server, this._startRowIndex, this._startColumnIndex, this._length, this._isHorizontal);
     }
 
     _renderBattleship(){
         BattleshipLocator._initCellsConsideredToLocateBattleship();
-        if(!this.isActive){
+        if(!this._isActive){
             return;
         }
-        if(this.isHorizontal){
-            for(let columnIndex = this.startColumnIndex; columnIndex < this.startColumnIndex + this.length; columnIndex++){
-                this.boardToLocateOnElement.cells[this.startRowIndex][columnIndex].markAsConsideredOfPlacingBattleship();
+        if(this._isHorizontal){
+            for(let columnIndex = this._startColumnIndex; columnIndex < this._startColumnIndex + this._length; columnIndex++){
+                this._boardToLocateOnElement.cells[this._startRowIndex][columnIndex].markAsConsideredOfPlacingBattleship();
             }
         }
         else{
-            for(let rowIndex = this.startRowIndex; rowIndex < this.startRowIndex + this.length; rowIndex++){
-                this.boardToLocateOnElement.cells[rowIndex][this.startColumnIndex].markAsConsideredOfPlacingBattleship();
+            for(let rowIndex = this._startRowIndex; rowIndex < this._startRowIndex + this._length; rowIndex++){
+                this._boardToLocateOnElement.cells[rowIndex][this._startColumnIndex].markAsConsideredOfPlacingBattleship();
             }
         }
     }
