@@ -40,12 +40,10 @@ module.exports = class Sessions{
         else{
             let isFoundAvailableSession = false;
             for(let session of this.sessions){
-            // for(let session in _sessions){
                 if(!session.isActive){
                     isFoundAvailableSession = true;
                     newUser = new User(socket);
                     session.user2 = newUser;
-                    //session.isActive = true;
                     usedSession = session
                 }
             }
@@ -54,7 +52,6 @@ module.exports = class Sessions{
                 newUser = new User(socket);
                 newSession.user1 = newUser;
                 this.sessions.push(newSession);
-                // _sessions.push(newSession);
                 usedSession = newSession
             }
         }
