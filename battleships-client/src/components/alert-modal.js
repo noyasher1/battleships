@@ -3,13 +3,11 @@ const contentItemClass = "modal-content-item";
 
 export default class AlertModal{
     constructor(message, funcOnClick){
-        this.message = message;
-        this.element = this.createHTML();
-        this.okButtonElement = document.getElementById(okButtonId);
-        this.addButtonListener(funcOnClick);
+        AlertModal._createHTML(message);
+        AlertModal.addButtonListener(funcOnClick);
     }
 
-    createHTML(){
+    static _createHTML(message){
         let modalDiv = document.createElement("div");
         modalDiv.id = "alert-modal";
 
@@ -19,7 +17,7 @@ export default class AlertModal{
         let messageElement = document.createElement("div");
         messageElement.classList.add("modal-message");
         messageElement.classList.add(contentItemClass);
-        messageElement.appendChild(document.createTextNode(this.message));
+        messageElement.appendChild(document.createTextNode(message));
         contentElement.appendChild(messageElement);
 
         let okButton = document.createElement("button");
@@ -33,7 +31,7 @@ export default class AlertModal{
         return modalDiv;
     }
 
-    addButtonListener(funcOnClick){
-        this.okButtonElement.addEventListener("click", funcOnClick);
+    static addButtonListener(funcOnClick){
+        document.getElementById(okButtonId).addEventListener("click", funcOnClick);
     }
 }
