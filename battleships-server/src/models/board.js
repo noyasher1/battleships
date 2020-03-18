@@ -7,23 +7,18 @@ const boardLastIndex= boardLength - 1;
 module.exports = class Board{
     constructor(){
         this.cells = [];
-        this.initBoard();
-        this.cellsContainBattleship = [];
+        this._initBoard();
+        this._cellsContainBattleship = [];
     }
 
-    initBoard(){
-        for (let i = 0; i < boardLength; i++) {
-            this.cells.push([]);
-            for (let j = 0; j < boardLength; j++) {
-                this.cells[i][j] = new Cell();
-            }
-        }
+    static _isCellExist(rowIndex, columnIndex){
+        return rowIndex >= 0 && rowIndex <= boardLastIndex && columnIndex >= 0 && columnIndex <= boardLastIndex;
     }
 
     markCellAsExposed(rowIndex, columnIndex){
         this.cells[rowIndex][columnIndex].isExposed = true;
         if(this.isCellContainBattleship(rowIndex, columnIndex)){
-            this.cellsContainBattleship.find(cell => cell.rowIndex === rowIndex && cell.columnIndex === columnIndex).isExposed = true;
+            this._cellsContainBattleship.find(cell => cell.rowIndex === rowIndex && cell.columnIndex === columnIndex).isExposed = true;
         }
     }
 
@@ -31,13 +26,13 @@ module.exports = class Board{
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
                 this.cells[startRowIndex][columnIndex].isContainBattleship = true;
-                this.cellsContainBattleship.push({rowIndex: startRowIndex, columnIndex, isExposed: false});
+                this._cellsContainBattleship.push({rowIndex: startRowIndex, columnIndex, isExposed: false});
             }
         }
         else{
             for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
                 this.cells[rowIndex][startColumnIndex].isContainBattleship = true;
-                this.cellsContainBattleship.push({rowIndex, columnIndex: startColumnIndex, isExposed: false});
+                this._cellsContainBattleship.push({rowIndex, columnIndex: startColumnIndex, isExposed: false});
             }
         }
     }
@@ -50,10 +45,43 @@ module.exports = class Board{
         return this.cells[rowIndex][columnIndex].isContainBattleship;
     }
 
-    isCellHaveOsculatedBattleship(rowIndex, columnIndex){
-        /*if(this.cells[rowIndex-1][columnIndex].isContainBattleship){
-            return true;
-        }*/
+    areCellsAvailableForLocating(startRowIndex, startColumnIndex, length, isHorizontal){
+        if(isHorizontal){
+            for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
+                if(!Board._isCellExist(startRowIndex, columnIndex) || this._isCellHaveOsculatedBattleship(startRowIndex, columnIndex) || this.isCellContainBattleship(startRowIndex, columnIndex)){
+                    return false;
+                }
+            }
+        }
+        else{
+            for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
+                if(!Board._isCellExist(rowIndex, startColumnIndex) || this._isCellHaveOsculatedBattleship(rowIndex, startColumnIndex) || this.isCellContainBattleship(rowIndex, startColumnIndex)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    areBattleshipsTotallyExposed(){
+        for(let containedBattleshipCell of this._cellsContainBattleship){
+            if(!containedBattleshipCell.isExposed){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    _initBoard(){
+        for (let i = 0; i < boardLength; i++) {
+            this.cells.push([]);
+            for (let j = 0; j < boardLength; j++) {
+                this.cells[i][j] = new Cell();
+            }
+        }
+    }
+
+    _isCellHaveOsculatedBattleship(rowIndex, columnIndex){
         if(rowIndex !== 0){
             if(this.cells[rowIndex-1][columnIndex].isContainBattleship){
                 return true;
@@ -115,36 +143,5 @@ module.exports = class Board{
             }
         }
         return false;
-    }
-
-    static isCellExist(rowIndex, columnIndex){
-        return rowIndex >= 0 && rowIndex <= boardLastIndex && columnIndex >= 0 && columnIndex <= boardLastIndex;
-    }
-
-    areCellsAvailableForLocating(startRowIndex, startColumnIndex, length, isHorizontal){
-        if(isHorizontal){
-            for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
-                if(!Board.isCellExist(startRowIndex, columnIndex) || this.isCellHaveOsculatedBattleship(startRowIndex, columnIndex) || this.isCellContainBattleship(startRowIndex, columnIndex)){
-                    return false;
-                }
-            }
-        }
-        else{
-            for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
-                if(!Board.isCellExist(rowIndex, startColumnIndex) || this.isCellHaveOsculatedBattleship(rowIndex, startColumnIndex) || this.isCellContainBattleship(rowIndex, startColumnIndex)){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    areBattleshipsTotallyExposed(){
-        for(let containedBattleshipCell of this.cellsContainBattleship){
-            if(!containedBattleshipCell.isExposed){
-                return false;
-            }
-        }
-        return true;
     }
 };
