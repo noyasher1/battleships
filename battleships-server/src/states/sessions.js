@@ -11,8 +11,9 @@ module.exports = class Sessions{
     static get sessionsManager(){
         return _sessions ? _sessions : _sessions = new Sessions();
     }
+
     isSocketAlreadySubscribe(socket){
-        if(this.isSessionsArrayEmpty()){
+        if(this._isSessionsArrayEmpty()){
             return false;
         }
         for(let session in this.sessions){
@@ -25,14 +26,10 @@ module.exports = class Sessions{
         return false;
     }
 
-    isSessionsArrayEmpty(){
-        return this.sessions.length === 0;
-    }
-
     subscribeUserSocketForAvailableSession(socket){
         let newUser;
         let usedSession;
-        if(this.isSessionsArrayEmpty()){
+        if(this._isSessionsArrayEmpty()){
             let newSession = new Session();
             newUser = new User(socket);
             newSession.user1 = newUser;
@@ -68,7 +65,7 @@ module.exports = class Sessions{
     }
 
     getSessionBySocket(socket){
-        if(this.isSessionsArrayEmpty()){
+        if(this._isSessionsArrayEmpty()){
             return null;
         }
         for(let session of this.sessions){
@@ -81,7 +78,7 @@ module.exports = class Sessions{
     }
 
     getUserBySocket(socket){
-        if(this.isSessionsArrayEmpty()){
+        if(this._isSessionsArrayEmpty()){
             return null;
         }
         let userSession = this.getSessionBySocket(socket);
@@ -89,5 +86,9 @@ module.exports = class Sessions{
             return userSession.user1;
         }
         return userSession.user2;
+    }
+
+    _isSessionsArrayEmpty(){
+        return this.sessions.length === 0;
     }
 };
