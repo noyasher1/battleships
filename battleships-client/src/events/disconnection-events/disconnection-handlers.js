@@ -6,7 +6,7 @@ export default class DisconnectionHandlers {
     static connectionError(serverSocket){
         serverSocket.disconnect();
         new AlertModal("Sorry :(\n"
-            + "There's not connection with the server."
+            + "There's not connection with the server.\n"
             + "Please try again later.", () => resetGame())
     }
 
