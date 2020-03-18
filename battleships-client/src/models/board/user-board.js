@@ -1,11 +1,10 @@
 'use strict';
 import BoardBase from './board-base.js';
-import Cell from '../cell.js';
 
 export default class UserBoard extends BoardBase{
     constructor(nodeId) {
         super(nodeId);
-        this.lastExposedCell = null;
+        this._lastExposedCell = null;
     }
 
     prepareForUserTurn(messageBox, popFirstMessage = true){
@@ -16,21 +15,20 @@ export default class UserBoard extends BoardBase{
     }
 
     prepareForOpponentTurn(){
-        if(this.lastExposedCell !== null){
-            this.lastExposedCell.unmarkAsLastExposed();
+        if(this._lastExposedCell !== null){
+            this._lastExposedCell.unmarkAsLastExposed();
         }
-        //freeze hover and click event
     }
 
     markCellAsExposed(rowIndex, columnIndex) {
         super.markCellAsExposed(rowIndex, columnIndex);
-        this.lastExposedCell = this.cells[rowIndex][columnIndex];
-        this.lastExposedCell.markAsLastExposed();
+        this._lastExposedCell = this.cells[rowIndex][columnIndex];
+        this._lastExposedCell.markAsLastExposed();
     }
 
     unmarkLastCellAsExposed(){
-        if(this.lastExposedCell !== null){
-            this.lastExposedCell.unmarkAsLastExposed();
+        if(this._lastExposedCell !== null){
+            this._lastExposedCell.unmarkAsLastExposed();
         }
     }
 
@@ -45,14 +43,14 @@ export default class UserBoard extends BoardBase{
 
     render(){
         let userBoardElement = document.createElement("div");
-        userBoardElement.id = "user-board";
+        userBoardElement.id = this._id;
         userBoardElement.tabIndex = 0;
 
-        userBoardElement.innerHTML = `Your Board\r${this.createHTMLTable("not-set")}`;
+        userBoardElement.innerHTML = `Your Board\r${this._createHTMLTable("not-set")}`;
 
         let parentDiv = document.getElementById("game-boards");
         parentDiv.insertBefore(userBoardElement, parentDiv.childNodes[0] || null);
 
-        this.mapBoard();
+        this._mapBoard();
     }
 }

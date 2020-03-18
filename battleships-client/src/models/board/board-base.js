@@ -3,22 +3,11 @@ import Cell from '../cell.js';
 
 export default class boardBase{
     constructor(nodeId){
-        this.id = nodeId;
+        this._id = nodeId;
         this.rowsNumber = 10;
         this.columnsNumber = 10;
         this.cells = [];
         this.element = null;
-    }
-
-    mapBoard(){
-        this.element = document.querySelector(`#${this.id}`);
-        for (let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++) {
-            this.cells.push([]);
-            let rowCellsElements = this.element.querySelectorAll(`tr`)[rowIndex].querySelectorAll("td");
-            for (let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++) {
-                this.cells[rowIndex][columnIndex] = new Cell(rowCellsElements[columnIndex]);
-            }
-        }
     }
 
     locateABattleship(startRowIndex, startColumnIndex, length, isHorizontal){
@@ -42,7 +31,18 @@ export default class boardBase{
         this.cells[rowIndex][columnIndex].markAsContainBattleship()
     }
 
-    createHTMLRow(...classNames){
+    _mapBoard(){
+        this.element = document.querySelector(`#${this._id}`);
+        for (let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++) {
+            this.cells.push([]);
+            let rowCellsElements = this.element.querySelectorAll(`tr`)[rowIndex].querySelectorAll("td");
+            for (let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++) {
+                this.cells[rowIndex][columnIndex] = new Cell(rowCellsElements[columnIndex]);
+            }
+        }
+    }
+
+    _createHTMLRow(...classNames){
         let htmlRow = `<tr>`;
         for(let columnIndex = 0; columnIndex < this.columnsNumber; columnIndex++){
             htmlRow += `\n\t<td class="${classNames.join(" ")}"></td>`;
@@ -52,10 +52,10 @@ export default class boardBase{
         return htmlRow;
     }
 
-    createHTMLTable(...cellClassNames){
+    _createHTMLTable(...cellClassNames){
         let htmlTable = `<table>`;
         for(let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++){
-            htmlTable += `\n\t${this.createHTMLRow(cellClassNames)}`;
+            htmlTable += `\n\t${this._createHTMLRow(cellClassNames)}`;
         }
         htmlTable += '\n</table>';
 
