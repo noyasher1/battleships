@@ -13,9 +13,11 @@ Run the server by entering the server directory and running the following comman
 ### Running the client
 First, run ```npm install http-server -g``` to install ```http-server``` module.
 
-Then run the client by entering the client directory and running the following command in the terminal:
+Second, run the client by entering the client directory and running the following command in the terminal:
 
 ```http-server```
+
+Then open http://localhost:8080/ to see your app.
 
 
 Enjoy ;)
