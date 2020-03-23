@@ -1,5 +1,5 @@
 'use strict';
-import CONFIG from './config.js';
+import CONFIG from '../config.js';
 import MessageBox from './models/message-box.js';
 import UserBoard from './models/board/user-board.js';
 import OpponentBoard from './models/board/opponent-board.js';
