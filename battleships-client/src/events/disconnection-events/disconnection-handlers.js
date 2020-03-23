@@ -1,18 +1,23 @@
 'use strict';
-import AlertModal from '../../components/alert-modal.js'
 import { resetGame } from '../../static-methods/session-methods.js';
 
 export default class DisconnectionHandlers {
     static connectionError(serverSocket){
         serverSocket.disconnect();
-        new AlertModal("Sorry :(\n"
-            + "There's not connection with the server.\n"
-            + "Please try again later.", () => resetGame())
+        let alertModal = document.createElement("alert-modal");
+        alertModal.message = "Sorry :(\n"
+            + "There's no connection with the server.\n"
+            + "Please try again later.";
+        alertModal.onClickOK = resetGame;
+        document.body.appendChild(alertModal);
     }
 
     static opponentHasDisconnected() {
-        new AlertModal("Sorry :(\n"
+        let alertModal = document.createElement("alert-modal");
+        alertModal.message = "Sorry :(\n"
             + "Your opponent has left the game.\n"
-            + "Redirecting to the main screen.", () => resetGame())
+            + "Redirecting to the main screen.";
+        alertModal.onClickOK = resetGame;
+        document.body.appendChild(alertModal);
     }
 }

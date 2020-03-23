@@ -1,37 +1,36 @@
-const okButtonId = "ok-button";
-const contentItemClass = "modal-content-item";
+fetch('./src/components/alert-modal.html')
+    .then(stream => stream.text())
+    .then(textHTML => {
+        let parser = new DOMParser();
+        return parser.parseFromString(textHTML, 'text/html');
+    })
+    .then(componentDocument => define(componentDocument));
 
-export default class AlertModal{
-    constructor(message, funcOnClick){
-        AlertModal._createHTML(message);
-        AlertModal._addButtonListener(funcOnClick);
+function define(componentDocument){
+    class AlertModal extends HTMLElement {
+        constructor() {
+            super();
+            this.message = null;
+            this.onClickOK = null;
+        }
+
+        connectedCallback() {
+            const shadowRoot = this.attachShadow({mode: 'open'});
+
+            // Select the template and clone it. Finally attach the cloned node to the shadowDOM's root.
+            // Current document needs to be defined to get DOM access to imported HTML
+            const template = componentDocument.querySelector('#alert-modal-template');
+            const instance = template.content.cloneNode(true);
+            shadowRoot.appendChild(instance);
+
+            this.shadowRoot.querySelector(".ok-button").addEventListener('click', this.onClickOK);
+            this.render();
+        }
+
+        render(){
+            this.shadowRoot.querySelector(".message").textContent = this.message;
+        }
     }
 
-    static _createHTML(message){
-        let modalDiv = document.createElement("div");
-        modalDiv.id = "alert-modal";
-
-        let contentElement = document.createElement("div");
-        contentElement.classList.add("modal-content");
-
-        let messageElement = document.createElement("div");
-        messageElement.classList.add("modal-message");
-        messageElement.classList.add(contentItemClass);
-        messageElement.appendChild(document.createTextNode(message));
-        contentElement.appendChild(messageElement);
-
-        let okButton = document.createElement("button");
-        okButton.id = okButtonId;
-        okButton.classList.add(contentItemClass);
-        okButton.appendChild(document.createTextNode("OK"));
-        contentElement.appendChild(okButton);
-
-        modalDiv.appendChild(contentElement);
-        document.body.appendChild(modalDiv);
-        return modalDiv;
-    }
-
-    static _addButtonListener(funcOnClick){
-        document.getElementById(okButtonId).addEventListener("click", funcOnClick);
-    }
+    customElements.define('alert-modal', AlertModal);
 }

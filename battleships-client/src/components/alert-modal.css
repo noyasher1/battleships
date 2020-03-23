@@ -1,0 +1,24 @@
+.alert-modal-container {
+    display: flex;
+    position: fixed; /* Stay in place */
+    align-content: space-around;
+    z-index: 1; /* Sit on top */
+    padding-top: inherit; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w*/
+}
+
+.alert-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    flex-direction: column;
+    text-align: center;
+    white-space: pre-line;
+}
