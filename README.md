@@ -18,4 +18,8 @@ First, run
 to install ```http-server``` module.
 
 Then run the client by entering the client directory and running the following command in the terminal:
+
 ```http-server```
+
+
+Enjoy ;)
