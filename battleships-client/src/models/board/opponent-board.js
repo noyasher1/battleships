@@ -28,6 +28,9 @@ export default class OpponentBoard extends BoardBase{
     }
 
     prepareForOpponentTurn(messageBox, popFirstMessage = true){
+        /*Why pass messageBox
+         why have "opponentBoard" do this when this is called in gameMoveHandlers.
+         */
         if(popFirstMessage){
             messageBox.popMessage();
         }

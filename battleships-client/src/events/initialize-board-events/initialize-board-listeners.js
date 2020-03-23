@@ -27,6 +27,12 @@ export default (socket, messageBox, userBoard, opponentBoard, buttonToRemove) =>
         InitializeBoardHandlers.allBattleshipsAreLocatedHandler(battleshipLocator, messageBox, opponentBoard);
     });
 
+    /*
+    this event is fired from a class called InitializeBoardsHandlers.
+    where you handle.
+    is this a board event ?
+    the splitting of handlers doesn't seem very clear.
+     */
     socket.on("OpponentIsReadyToPlay", () => {
         InitializeBoardHandlers.opponentIsReadyToPlayHandler( )
     })

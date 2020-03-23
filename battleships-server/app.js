@@ -25,12 +25,24 @@ io.on("connection", (socket) => {
         user = newUser;
     }
     else{
+        /*
+        What does this do..
+        how can you get an already subscribed socket ?
+        I couldn't reproduce.
+        wouldn't you initialize the game twice ?
+        maybe i just don't understand.
+         */
         isNewUser = false;
         user = sessions.getUserBySocket(socket);
         session = sessions.getSessionBySocket(socket);
     }
 
     initializeBoardsListeners(socket, session, user, isNewUser, CONFIG.rowsNumber, CONFIG.columnsNumber);
+    /*
+    You have a useless abstraction with listeners with these two listeners.
+    They do nothing..
+    I'm sure you can structure it differently.
+     */
     gameMovesListeners(sessions.sessions, socket, session, user);
     disconnectionListeners(sessions, socket, user);
 });

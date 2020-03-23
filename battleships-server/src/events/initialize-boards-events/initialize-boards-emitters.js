@@ -1,6 +1,13 @@
 'use strict';
 
 module.exports = class InitializeBoardsEmitters{
+    /*
+    This idea of an interface is very clean. +1
+    maybe use named parameters
+    askForStartLocating({server, rowsNumber})
+    good if arguments are optional
+    good when there are too many arguments like locateABattleshipStatus
+     */
     static askForStartLocating(server, rowsNumber, columnsNumber) {
         server.emit("AskForStartLocating", {
             rowsNumber,

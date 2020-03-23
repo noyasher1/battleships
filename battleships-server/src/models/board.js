@@ -23,9 +23,12 @@ module.exports = class Board{
     }
 
     markCellsAsContainBattleship(startRowIndex, startColumnIndex, length, isHorizontal){
+        /*Notice this dup of logic.
+        have a proper iterator for iterating in a direction.
+         */
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
-                this.cells[startRowIndex][columnIndex].isContainBattleship = true;
+                this.cells[startRowIndex][columnIndex].isContainBattleship = true; // --> hasBattleship
                 this._cellsContainBattleship.push({rowIndex: startRowIndex, columnIndex, isExposed: false});
             }
         }
@@ -46,6 +49,7 @@ module.exports = class Board{
     }
 
     areCellsAvailableForLocating(startRowIndex, startColumnIndex, length, isHorizontal){
+        //Notice this dup of logic
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
                 if(!Board._isCellExist(startRowIndex, columnIndex) || this._isCellHaveOsculatedBattleship(startRowIndex, columnIndex) || this.isCellContainBattleship(startRowIndex, columnIndex)){
@@ -73,6 +77,7 @@ module.exports = class Board{
     }
 
     _initBoard(){
+        //iterator
         for (let i = 0; i < boardLength; i++) {
             this.cells.push([]);
             for (let j = 0; j < boardLength; j++) {
@@ -82,6 +87,26 @@ module.exports = class Board{
     }
 
     _isCellHaveOsculatedBattleship(rowIndex, columnIndex){
+        /* Look who it is teaching me fancy words!
+        Though it should be isCellOsculated ( can't have osculated )
+        either way I won't even read this fucking function.
+
+        for (let x = rowIndex - 1; x < rowIndex + 2; x++) {
+            for (let y = columnIndex -1; y < columnIndex + 2; y++) {
+                const pos = [x,y];
+                if (this.isValidPosition(pos)) {
+                    if (this.getPosition(pos).hasShip) {
+                        return true;
+                    }
+                }
+            }
+        }
+        also I would instead of this even do a surroundingCellsIterator. ( that uses isValidPosition ) .
+        const it = this.getSurroundingCellsIterator([rowIndex, columnIndex]);
+        while (it.hasNext() ....
+
+        omg you already have _isCellExist function.. use it ;)
+         */
         if(rowIndex !== 0){
             if(this.cells[rowIndex-1][columnIndex].isContainBattleship){
                 return true;
