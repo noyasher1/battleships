@@ -1,4 +1,4 @@
-fetch('./src/components/alert-modal.html')
+fetch(`${document.currentScript.src}/../alert-modal.html`)
     .then(stream => stream.text())
     .then(textHTML => {
         let parser = new DOMParser();

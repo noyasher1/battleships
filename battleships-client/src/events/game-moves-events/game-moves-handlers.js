@@ -29,7 +29,6 @@ export default class GameMovesHandlers{
             if(data.isContainBattleship){
                 opponentBoard.markCellAsContainBattleship(rowIndex, columnIndex);
                 if(data.amIWinner){
-                    //new AlertModal("You are the winner", () => resetGame());
                     let alertModal = document.createElement("alert-modal");
                     alertModal.message = "You are the winner";
                     alertModal.onClickOK = resetGame;
@@ -51,7 +50,6 @@ export default class GameMovesHandlers{
         if(data.isContainBattleship){
             userBoard.markCellAsContainBattleship(rowIndex, columnIndex);
             if(data.isOpponentWon){
-                //new AlertModal("You are a looser", () => resetGame());
                 let alertModal = document.createElement("alert-modal");
                 alertModal.message = "You are a looser";
                 alertModal.onClickOK = resetGame;
