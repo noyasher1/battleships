@@ -14,7 +14,7 @@ export default class UserBoard extends BoardBase{
         messageBox.pushMessage("This is your turn.");
     }
 
-    prepareForOpponentTurn(){
+    prepareForOpponentTurn(){ // why is this named prepareForOpponentTurn
         if(this._lastExposedCell !== null){
             this._lastExposedCell.unmarkAsLastExposed();
         }

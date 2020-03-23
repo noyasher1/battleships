@@ -40,6 +40,7 @@ export default class GameMovesHandlers{
                 opponentBoard.prepareForOpponentTurn(messageBox);
             }
         }
+        //Handle if it isn't success ?
     }
 
     static opponentMoveHandler(data, messageBox, userBoard, opponentBoard){
@@ -51,7 +52,7 @@ export default class GameMovesHandlers{
             userBoard.markCellAsContainBattleship(rowIndex, columnIndex);
             if(data.isOpponentWon){
                 let alertModal = document.createElement("alert-modal");
-                alertModal.message = "You are a looser";
+                alertModal.message = "You are a looser"; // lol
                 alertModal.onClickOK = resetGame;
                 document.body.appendChild(alertModal);
             }
