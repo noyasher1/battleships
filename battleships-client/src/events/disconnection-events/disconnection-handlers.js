@@ -1,6 +1,8 @@
 'use strict';
 import { resetGame } from '../../static-methods/session-methods.js';
 
+// CR: dup logic here as well
+
 export default class DisconnectionHandlers {
     static connectionError(serverSocket){
         serverSocket.disconnect();
