@@ -1,7 +1,7 @@
 'use strict';
 
 let isOpponentFinishedLocating = false;
-
+// CR: no need for static class here. just export the functions
 export default class InitializeBoardHandlers{
     static askForABattleshipHandler(data, battleshipLocator){
         battleshipLocator.startLocating(data.length);

@@ -1,6 +1,9 @@
 "use strict";
 import InitializeBoardEmitters from "../events/initialize-board-events/initialize-board-emitters.js"
 
+// CR: this file is a monstrosity, very long and very hard to follow. try to split to smaller parts
+// CR: separate business logic from UI logic
+
 const buttonsDivId = "controllingBattleshipLocation";
 const moveRightButtonId = "move-right";
 const moveLeftButtonId = "move-left";
@@ -79,6 +82,7 @@ export default class BattleshipLocator{
         let boardToLocateElementOn = this._boardToLocateOnElement.element;
         let buttonsDiv = document.createElement("div");
         buttonsDiv.id = buttonsDivId;
+        // CR: it's funny that the move right button is on the left ;)
         buttonsDiv.innerHTML = `
             <button class="locatingButton moveButton" id=${moveUpButtonId}>Move Up</button>
             <button class="locatingButton moveButton" id=${moveDownButtonId}>Move Down</button>

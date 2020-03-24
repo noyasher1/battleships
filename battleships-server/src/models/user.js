@@ -5,6 +5,7 @@ module.exports = class User{
     constructor(socket){
         this.socket = socket;
         this.board = new Board();
+        // CR: This should be in conf
         this._battleshipsToLocate = [
             {
                 length: 5,

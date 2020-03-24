@@ -8,6 +8,10 @@ module.exports = class Sessions{
         this.sessions = [];
     }
 
+    // CR: usually when creating a singleton we use getInstance method instead. This makes it easier to understand that it is in fact a singleton.
+    // But actually we don't really use singleton with javascript, can simply create a variable (like you did with _sessions on top)
+    // and just export functions that use it. The usage of a class in this case is redundant for my perspective. I added an edited version under the same name
+    // plus a _CR suffix to show you what i mean)
     static get sessionsManager(){
         return _sessions ? _sessions : _sessions = new Sessions();
     }

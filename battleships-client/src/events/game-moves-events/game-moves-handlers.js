@@ -21,6 +21,8 @@ export default class GameMovesHandlers{
 
     }
 
+    // CR: both user and opponent logic is very similar, there probably a way to combine them
+
     static userMoveStatusHandler(data, messageBox, opponentBoard, userBoard){
         if(data.isSucceed){
             let rowIndex = data.rowIndex;

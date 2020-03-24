@@ -1,5 +1,7 @@
 'use strict';
 
+// CR: Notice how you pass server/socket param for each function. You could prevent that be initializing an instance of this class for every socket,
+// and storing the socket under the instance scope (see initialize-boards-emitters_CR.js)
 module.exports = class InitializeBoardsEmitters{
     static askForStartLocating(server, rowsNumber, columnsNumber) {
         server.emit("AskForStartLocating", {
