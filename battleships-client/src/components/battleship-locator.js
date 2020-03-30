@@ -11,6 +11,10 @@ const rotateLeftButtonId = "rotate-left";
 const resetBattleshipStateButtonId = "reset-battleship-state";
 const placeTheBattleshipButtonId = "place-the-battleship";
 
+function initCellsConsideredToLocateBattleship(){
+    document.querySelectorAll(".considered-to-contain-battleship").forEach(cell => cell.classList.remove("considered-to-contain-battleship"))
+}
+
 export default class BattleshipLocator{
     constructor(server, boardToLocateOn, _messageBox){
         this.server = server;
@@ -36,10 +40,6 @@ export default class BattleshipLocator{
         this._addKeysListeners();
         this._shouldDisableAllButtons(true);
         this._initMessageBox();
-    }
-
-    static _initCellsConsideredToLocateBattleship(){
-        document.querySelectorAll(".considered-to-contain-battleship").forEach(cell => cell.classList.remove("considered-to-contain-battleship"))
     }
 
     startLocating(length){
@@ -299,7 +299,7 @@ export default class BattleshipLocator{
     }
 
     _renderBattleship(){
-        BattleshipLocator._initCellsConsideredToLocateBattleship();
+        initCellsConsideredToLocateBattleship();
         if(!this._isActive){
             return;
         }

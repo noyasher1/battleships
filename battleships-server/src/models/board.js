@@ -4,15 +4,15 @@ const Cell = require("./cell");
 const boardLength = 10;
 const boardLastIndex= boardLength - 1;
 
+function isCellExist(rowIndex, columnIndex){
+    return rowIndex >= 0 && rowIndex <= boardLastIndex && columnIndex >= 0 && columnIndex <= boardLastIndex;
+}
+
 module.exports = class Board{
     constructor(){
         this.cells = [];
         this._initBoard();
         this._cellsContainBattleship = [];
-    }
-
-    static _isCellExist(rowIndex, columnIndex){
-        return rowIndex >= 0 && rowIndex <= boardLastIndex && columnIndex >= 0 && columnIndex <= boardLastIndex;
     }
 
     markCellsAsContainBattleship(startRowIndex, startColumnIndex, length, isHorizontal){
@@ -35,14 +35,14 @@ module.exports = class Board{
     areCellsAvailableForLocating(startRowIndex, startColumnIndex, length, isHorizontal){
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
-                if(!Board._isCellExist(startRowIndex, columnIndex) || this._isCellHaveOsculatedBattleship(startRowIndex, columnIndex) || this.cells[startRowIndex][columnIndex].isContainBattleship){
+                if(!isCellExist(startRowIndex, columnIndex) || this._isCellHaveOsculatedBattleship(startRowIndex, columnIndex) || this.cells[startRowIndex][columnIndex].isContainBattleship){
                     return false;
                 }
             }
         }
         else{
             for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
-                if(!Board._isCellExist(rowIndex, startColumnIndex) || this._isCellHaveOsculatedBattleship(rowIndex, startColumnIndex) || this.cells[rowIndex][startColumnIndex].isContainBattleship){
+                if(!isCellExist(rowIndex, startColumnIndex) || this._isCellHaveOsculatedBattleship(rowIndex, startColumnIndex) || this.cells[rowIndex][startColumnIndex].isContainBattleship){
                     return false;
                 }
             }
@@ -71,7 +71,7 @@ module.exports = class Board{
     _isCellHaveOsculatedBattleship(rowIndex, columnIndex){
         for (let x = rowIndex - 1; x <= rowIndex + 1; x++) {
             for (let y = columnIndex -1; y <= columnIndex + 1; y++) {
-                if (Board._isCellExist(x, y) && !(x === rowIndex && y === columnIndex)) {
+                if (isCellExist(x, y) && !(x === rowIndex && y === columnIndex)) {
                     if (this.cells[x][y].isContainBattleship) {
                         return true;
                     }
