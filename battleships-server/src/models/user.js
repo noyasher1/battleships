@@ -1,32 +1,13 @@
 'use strict';
+const CONFIG = require("../../config");
 const Board = require('./board');
 
 module.exports = class User{
     constructor(socket){
         this.socket = socket;
         this.board = new Board();
-        this._battleshipsToLocate = [
-            {
-                length: 5,
-                isLocated: false
-            },
-            {
-                length: 4,
-                isLocated: false
-            },
-            {
-                length: 3,
-                isLocated: false
-            },
-            {
-                length: 3,
-                isLocated: false
-            },
-            {
-                length: 2,
-                isLocated: false
-            }
-        ];
+        this._battleshipsToLocate = null;
+        this._initBattleshipsLengths()
     }
 
     get isFinishedLocating(){
@@ -45,5 +26,16 @@ module.exports = class User{
 
     markLastBattleshipAsLocated(){
         this.nextBattleship().isLocated = true;
+    }
+
+    _initBattleshipsLengths(){
+        let lengths = CONFIG.battleshipsLengthsToLocate;
+        this._battleshipsToLocate = [];
+        for(let length of lengths){
+            this._battleshipsToLocate.push({
+                length,
+                isLocated: false
+            });
+        }
     }
 };
