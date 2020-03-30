@@ -7,7 +7,7 @@ module.exports = class DisconnectionHandlers{
         let opponent = session!== null?session.getOpponent(user):null;
         if(opponent !== null){
             DisconnectionEmitters.opponentHasDisconnected(opponent.socket);
-            sessions.sessions.splice(sessions.sessions.indexOf(session), 1);
+            sessions.removeSession(session);
         }
     }
 };

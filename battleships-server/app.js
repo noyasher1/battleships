@@ -5,7 +5,7 @@ const IoServer = require("socket.io");
 const initializeBoardsListeners = require("./src/events/initialize-boards-events/initialize-boards-listeners");
 const gameMovesListeners = require("./src/events/game-moves-events/game-moves-listeners");
 const disconnectionListeners = require("./src/events/disconnection-events/disconnection-listeners");
-const sessions = require("./src/states/sessions.js").sessionsManager;
+const sessions = require("./src/states/sessions.js");
 
 const port = process.env.PORT || CONFIG.port;
 const app = http.createServer();
@@ -31,7 +31,7 @@ io.on("connection", (socket) => {
     }
 
     initializeBoardsListeners(socket, session, user, isNewUser, CONFIG.rowsNumber, CONFIG.columnsNumber);
-    gameMovesListeners(sessions.sessions, socket, session, user);
+    gameMovesListeners(sessions, socket, session, user);
     disconnectionListeners(sessions, socket, user);
 });
 

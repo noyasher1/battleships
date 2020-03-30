@@ -14,7 +14,7 @@ module.exports = class GameMovesHandlers{
             GameMovesEmitters.userMoveStatus(user.socket, true, rowIndex, columnIndex, isCellContainBattleship, isUserWon);
             GameMovesEmitters.opponentMove(opponent.socket, rowIndex, columnIndex, isCellContainBattleship, isUserWon);
             if(isUserWon){
-                sessions.splice(sessions.indexOf(session), 1);
+                sessions.removeSession(session)
             }
         }
     }
