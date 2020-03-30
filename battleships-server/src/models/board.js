@@ -17,9 +17,6 @@ module.exports = class Board{
 
     markCellAsExposed(rowIndex, columnIndex){
         this.cells[rowIndex][columnIndex].isExposed = true;
-        if(this.isCellContainBattleship(rowIndex, columnIndex)){
-            this._cellsContainBattleship.find(cell => cell.rowIndex === rowIndex && cell.columnIndex === columnIndex).isExposed = true;
-        }
     }
 
     markCellsAsContainBattleship(startRowIndex, startColumnIndex, length, isHorizontal){
