@@ -82,8 +82,8 @@ export default class BattleshipLocator{
         buttonsDiv.innerHTML = `
             <button class="locatingButton moveButton" id=${moveUpButtonId}>Move Up</button>
             <button class="locatingButton moveButton" id=${moveDownButtonId}>Move Down</button>
-            <button class="locatingButton moveButton" id=${moveRightButtonId}>Move Right</button>
             <button class="locatingButton moveButton" id=${moveLeftButtonId}>Move Left</button>
+            <button class="locatingButton moveButton" id=${moveRightButtonId}>Move Right</button>
             <button class="locatingButton moveButton rotateButton" id=${rotateRightButtonId}>Rotate Right</button>
             <button class="locatingButton moveButton rotateButton" id=${rotateLeftButtonId}>Rotate Left</button>
             <button class="locatingButton" id=${placeTheBattleshipButtonId}>Place the battleship</button>
