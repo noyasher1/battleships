@@ -25,14 +25,16 @@ module.exports = class Board{
     markCellsAsContainBattleship(startRowIndex, startColumnIndex, length, isHorizontal){
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
-                this.cells[startRowIndex][columnIndex].isContainBattleship = true;
-                this._cellsContainBattleship.push({rowIndex: startRowIndex, columnIndex, isExposed: false});
+                let currentCell = this.cells[startRowIndex][columnIndex];
+                currentCell.isContainBattleship = true;
+                this._cellsContainBattleship.push(currentCell);
             }
         }
         else{
             for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
-                this.cells[rowIndex][startColumnIndex].isContainBattleship = true;
-                this._cellsContainBattleship.push({rowIndex, columnIndex: startColumnIndex, isExposed: false});
+                let currentCell = this.cells[rowIndex][startColumnIndex];
+                currentCell.isContainBattleship = true;
+                this._cellsContainBattleship.push(currentCell);
             }
         }
     }
@@ -76,7 +78,7 @@ module.exports = class Board{
         for (let i = 0; i < boardLength; i++) {
             this.cells.push([]);
             for (let j = 0; j < boardLength; j++) {
-                this.cells[i][j] = new Cell();
+                this.cells[i][j] = new Cell(i, j);
             }
         }
     }
