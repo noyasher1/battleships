@@ -82,63 +82,12 @@ module.exports = class Board{
     }
 
     _isCellHaveOsculatedBattleship(rowIndex, columnIndex){
-        if(rowIndex !== 0){
-            if(this.cells[rowIndex-1][columnIndex].isContainBattleship){
-                return true;
-            }
-            if(columnIndex !== 0){
-                if(this.cells[rowIndex-1][columnIndex-1].isContainBattleship){
-                    return true;
-                }
-            }
-            if(columnIndex !== boardLastIndex){
-                if(this.cells[rowIndex-1][columnIndex+1].isContainBattleship){
-                    return true;
-                }
-            }
-        }
-        if(rowIndex !== boardLastIndex){
-            if(this.cells[rowIndex+1][columnIndex].isContainBattleship){
-                return true;
-            }
-            if(columnIndex !== 0){
-                if(this.cells[rowIndex+1][columnIndex-1].isContainBattleship){
-                    return true;
-                }
-            }
-            if(columnIndex !== boardLastIndex){
-                if(this.cells[rowIndex+1][columnIndex+1].isContainBattleship){
-                    return true;
-                }
-            }
-        }
-        if(columnIndex !== 0){
-            if(this.cells[rowIndex][columnIndex-1].isContainBattleship){
-                return true;
-            }
-            if(rowIndex !== 0){
-                if(this.cells[rowIndex-1][columnIndex-1].isContainBattleship){
-                    return true;
-                }
-            }
-            if(rowIndex !== boardLastIndex){
-                if(this.cells[rowIndex+1][columnIndex-1].isContainBattleship){
-                    return true;
-                }
-            }
-        }
-        if(columnIndex !== boardLastIndex){
-            if(this.cells[rowIndex][columnIndex+1].isContainBattleship){
-                return true;
-            }
-            if(rowIndex !== 0){
-                if(this.cells[rowIndex-1][columnIndex+1].isContainBattleship){
-                    return true;
-                }
-            }
-            if(rowIndex !== boardLastIndex){
-                if(this.cells[rowIndex+1][columnIndex+1].isContainBattleship){
-                    return true;
+        for (let x = rowIndex - 1; x <= rowIndex + 1; x++) {
+            for (let y = columnIndex -1; y <= columnIndex + 1; y++) {
+                if (Board._isCellExist(x, y) && !(x === rowIndex && y === columnIndex)) {
+                    if (this.cells[x][y].isContainBattleship) {
+                        return true;
+                    }
                 }
             }
         }
