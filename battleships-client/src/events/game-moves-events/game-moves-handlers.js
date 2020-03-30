@@ -27,7 +27,7 @@ export default class GameMovesHandlers{
             let columnIndex = data.columnIndex;
             opponentBoard.markCellAsExposed(rowIndex, columnIndex);
             if(data.isContainBattleship){
-                opponentBoard.markCellAsContainBattleship(rowIndex, columnIndex);
+                opponentBoard.cells[rowIndex][columnIndex].markAsContainBattleship();
                 if(data.amIWinner){
                     let alertModal = document.createElement("alert-modal");
                     alertModal.message = "You are the winner";
@@ -48,7 +48,7 @@ export default class GameMovesHandlers{
         userBoard.unmarkLastCellAsExposed();
         userBoard.markCellAsExposed(rowIndex, columnIndex);
         if(data.isContainBattleship){
-            userBoard.markCellAsContainBattleship(rowIndex, columnIndex);
+            userBoard.cells[rowIndex][columnIndex].markAsContainBattleship();
             if(data.isOpponentWon){
                 let alertModal = document.createElement("alert-modal");
                 alertModal.message = "You are a looser";

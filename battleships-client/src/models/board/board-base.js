@@ -27,10 +27,6 @@ export default class boardBase{
         this.cells[rowIndex][columnIndex].markAsExposed();
     }
 
-    markCellAsContainBattleship(rowIndex, columnIndex){
-        this.cells[rowIndex][columnIndex].markAsContainBattleship()
-    }
-
     _mapBoard(){
         this.element = document.querySelector(`#${this._id}`);
         for (let rowIndex = 0; rowIndex < this.rowsNumber; rowIndex++) {
