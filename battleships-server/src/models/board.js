@@ -15,10 +15,6 @@ module.exports = class Board{
         return rowIndex >= 0 && rowIndex <= boardLastIndex && columnIndex >= 0 && columnIndex <= boardLastIndex;
     }
 
-    markCellAsExposed(rowIndex, columnIndex){
-        this.cells[rowIndex][columnIndex].isExposed = true;
-    }
-
     markCellsAsContainBattleship(startRowIndex, startColumnIndex, length, isHorizontal){
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
@@ -36,25 +32,17 @@ module.exports = class Board{
         }
     }
 
-    isCellExposed(rowIndex, columnIndex){
-        return this.cells[rowIndex][columnIndex].isExposed;
-    }
-
-    isCellContainBattleship(rowIndex, columnIndex){
-        return this.cells[rowIndex][columnIndex].isContainBattleship;
-    }
-
     areCellsAvailableForLocating(startRowIndex, startColumnIndex, length, isHorizontal){
         if(isHorizontal){
             for(let columnIndex = startColumnIndex; columnIndex < startColumnIndex + length; columnIndex++){
-                if(!Board._isCellExist(startRowIndex, columnIndex) || this._isCellHaveOsculatedBattleship(startRowIndex, columnIndex) || this.isCellContainBattleship(startRowIndex, columnIndex)){
+                if(!Board._isCellExist(startRowIndex, columnIndex) || this._isCellHaveOsculatedBattleship(startRowIndex, columnIndex) || this.cells[startRowIndex][columnIndex].isContainBattleship){
                     return false;
                 }
             }
         }
         else{
             for(let rowIndex = startRowIndex; rowIndex < startRowIndex + length; rowIndex++){
-                if(!Board._isCellExist(rowIndex, startColumnIndex) || this._isCellHaveOsculatedBattleship(rowIndex, startColumnIndex) || this.isCellContainBattleship(rowIndex, startColumnIndex)){
+                if(!Board._isCellExist(rowIndex, startColumnIndex) || this._isCellHaveOsculatedBattleship(rowIndex, startColumnIndex) || this.cells[rowIndex][startColumnIndex].isContainBattleship){
                     return false;
                 }
             }
